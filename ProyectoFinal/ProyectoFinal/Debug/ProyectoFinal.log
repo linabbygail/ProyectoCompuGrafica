@@ -1,0 +1,13 @@
+﻿Build started 22/10/2015 01:32:09 a.m..
+     1>Project "C:\Users\cr76\documents\visual studio 2015\Projects\ProyectoFinal\ProyectoFinal\ProyectoFinal.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Iinclude /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt main_prac5.cpp
+         main_prac5.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\cr76\documents\visual studio 2015\Projects\ProyectoFinal\Debug\ProyectoFinal.exe" /INCREMENTAL /NOLOGO /LIBPATH:lib glut32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\cr76\documents\visual studio 2015\Projects\ProyectoFinal\Debug\ProyectoFinal.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\cr76\documents\visual studio 2015\Projects\ProyectoFinal\Debug\ProyectoFinal.lib" /MACHINE:X86 Debug\main_prac5.obj
+         ProyectoFinal.vcxproj -> C:\Users\cr76\documents\visual studio 2015\Projects\ProyectoFinal\Debug\ProyectoFinal.exe
+     1>Done Building Project "C:\Users\cr76\documents\visual studio 2015\Projects\ProyectoFinal\ProyectoFinal\ProyectoFinal.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.54
