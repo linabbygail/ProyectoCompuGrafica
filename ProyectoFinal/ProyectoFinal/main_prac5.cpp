@@ -42,14 +42,14 @@ void InitGL ( void )     // Inicializamos parametros
 void prisma(float largo, float altura, float profundidad, GLuint text)
 {
 	GLfloat vertice[8][3] = {
-		{ largo ,-altura, profundidad },    //Coordenadas Vértice 0 V0
-		{ -largo ,-altura, profundidad },    //Coordenadas Vértice 1 V1
-		{ -largo ,-altura, -profundidad },    //Coordenadas Vértice 2 V2
-		{ largo ,-altura, -profundidad },    //Coordenadas Vértice 3 V3
-		{ largo ,altura, profundidad },    //Coordenadas Vértice 4 V4
-		{ largo ,altura, -profundidad },    //Coordenadas Vértice 5 V5
-		{ -largo ,altura, -profundidad },    //Coordenadas Vértice 6 V6
-		{ -largo ,altura , profundidad },    //Coordenadas Vértice 7 V7
+		{ largo*0.5 ,-altura*0.5, profundidad*0.5 },    //Coordenadas Vértice 0 V0
+		{ -largo*0.5 ,-altura*0.5, profundidad*0.5 },    //Coordenadas Vértice 1 V1
+		{ -largo*0.5 ,-altura*0.5, -profundidad*0.5 },    //Coordenadas Vértice 2 V2
+		{ largo*0.5,-altura*0.5, -profundidad*0.5 },    //Coordenadas Vértice 3 V3
+		{ largo*0.5,altura*0.5, profundidad*0.5 },    //Coordenadas Vértice 4 V4
+		{ largo*0.5,altura*0.5, -profundidad*0.5 },    //Coordenadas Vértice 5 V5
+		{ -largo*0.5,altura*0.5, -profundidad*0.5 },    //Coordenadas Vértice 6 V6
+		{ -largo*0.5,altura*0.5, profundidad*0.5 },    //Coordenadas Vértice 7 V7
 	};
 
 	glBegin(GL_POLYGON);	//Front
@@ -115,747 +115,2047 @@ void display ( void )   // Creamos la funcion donde se dibuja
 		*			Planta Baja
 		***************************************/
 		glPushMatrix();
+			/*Baño izquierda*/
 			glColor3f(0,1,0);
-			prisma(6,7,10,1);
-			glTranslatef(0, 0, 18);
-			glColor3f(1, 0, 0);
-			prisma(6, 7, 8, 1);
-			glTranslatef(26, 0,-10);
-			glColor3f(0, 0, 1);
-			prisma(20, 7, 18, 0);			
-			glTranslatef(32.5, 0, 0);
-			glColor3f(1, 1, 0);
-			prisma(12.5, 7, 18, 0);
-			glTranslatef(25, 0, 0);
-			glColor3f(0, 1, 1);			
-			prisma(12.5, 7, 18, 0);
-			glTranslatef(32.5, 0, 0);
-			glColor3f(1, 0, 1);
-			prisma(20, 7, 18, 0);
-			glTranslatef(26, 0, -8);
-			glColor3f(0, 1, 0);
-			prisma(6, 7, 10, 1);
-			glTranslatef(0, 0, 18);
-			glColor3f(1, 0, 0);
-			prisma(6, 7, 8, 1);
+			prisma(6, 12,10,1);
+			/*Ventana baño*/
 			glPushMatrix();
-				glTranslatef(-12, 0, 28);
+				glTranslatef(0,1,-5);
+				glColor3f(0.62,0.92,0.99);
+				prisma(3,6,0.1,0);
+			glPopMatrix();
+			/*DRS izquierda*/
+			glTranslatef(0, 0, 9);
+			glColor3f(1, 0, 0);
+			prisma(6, 12, 8, 1);
+			/*Oficina director izquierda*/
+			glTranslatef(13, 0,-5);
+			glColor3f(0, 0, 1);
+			prisma(20, 12, 18, 0);						
+			/*Ventana director izquierda*/
+			glPushMatrix();
+				glTranslatef(-4,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(6,6,0.1,0);
+			glPopMatrix();			
+			/*Supporting staff office izquierda*/
+			glTranslatef(16.25, 0, 0);
+			glColor3f(1, 1, 0);
+			prisma(12.5, 12, 18, 0);
+			/*Ventana supportin izquierda*/
+			glPushMatrix();
+				glTranslatef(1,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(7,6,0.1,0);
+			glPopMatrix();
+			/*Supporting staff office derecha*/
+			glTranslatef(12.5, 0, 0);
+			glColor3f(0, 1, 1);			
+			prisma(12.5, 12, 18, 0);
+			/*Ventana supportin derecha*/
+			glPushMatrix();
+				glTranslatef(-1,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(7,6,0.1,0);
+			glPopMatrix();
+			/*Director office derecha*/
+			glTranslatef(16.25, 0, 0);
+			glColor3f(1, 0, 1);
+			prisma(20, 12, 18, 0);
+			/*Ventana director derecha*/
+			glPushMatrix();
+				glTranslatef(4,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(6,6,0.1,0);
+			glPopMatrix();			
+			/*Bath derecha*/
+			glTranslatef(13, 0, -4);
+			glColor3f(0, 1, 0);
+			prisma(6, 12, 10, 1);
+			/*Ventana baño*/
+			glPushMatrix();
+				glTranslatef(0,1,-5);
+				glColor3f(0.62,0.92,0.99);
+				prisma(3,6,0.1,0);
+			glPopMatrix();
+			/*DRS derecha*/
+			glTranslatef(0, 0, 9);
+			glColor3f(1, 0, 0);
+			prisma(6, 12, 8, 1);
+			glPushMatrix();
+				/*Director office derecha*/
+				glTranslatef(-6, 0, 14);
 				glColor3f(0, 1, 0);
-				prisma(18, 7, 20, 1);	
-				glTranslatef(-118, 0, 0);
+				prisma(18, 12, 20, 1);	
+				/*Director office izquierda*/
+				glTranslatef(-59, 0, 0);
 				glColor3f(0, 1, 0);
-				prisma(18, 7, 20, 1);
+				prisma(18, 12, 20, 1);				
+				/*	Ventana oficiona director izquierda*/
 				glPushMatrix();
-				glTranslatef(-12.5, 0, 31);
-				glColor3f(1, 0, 0);
-				prisma(5.5, 7, 11, 0);
-				glTranslatef(18, 0, 0);
-				glColor3f(0, 0, 1);
-				prisma(12.5, 7, 11, 0);
-				glTranslatef(107, 0, 0);
-				glColor3f(0, 0, 1);
-				prisma(12.5, 7, 11, 0);
-				glTranslatef(18, 0, 0);
-				glColor3f(1, 0, 0);
-				prisma(5.5, 7, 11, 0);
-				glPopMatrix();
+					glTranslatef(-9,0,0);
+					glColor3f(0.62,0.92,0.99);
+					prisma(0.1,6,8,0);
+				glPopMatrix();		
 				glPushMatrix();
-					glTranslatef(-14,0,46);
-					glColor3f(1 ,0 ,1 );
-					prisma(4, 7, 4, 0);
-					glPushMatrix();
-						glTranslatef(10, 0, 4);
-						glColor3f(1, 0, 0);
-						prisma(6, 7, 8, 0);
-						glTranslatef(126, 0, 0);
-						glColor3f(1, 0, 0);
-						prisma(6, 7, 8, 0);
-						glTranslatef(10, 0, -4);
-						glColor3f(1, 0, 1);
-						prisma(4, 7, 4, 0);
-						glTranslatef(0, 0, 8);
-						glColor3f(0, 1, 1);
-						prisma(4, 7, 4, 0);
-					glPopMatrix();
-					glTranslatef(0, 0, 8);
-					glColor3f(0, 1, 1);
-					prisma(4, 7, 4, 0);
-				glPopMatrix();
-				glPushMatrix();
-					glTranslatef(-13,0,61);
-					glColor3f(1, 1, 1);
-					prisma(5, 7, 3,0);
-					glPushMatrix();
-						glTranslatef(10, 0, 15);
-						glColor3f(1, 1, 0);
-						prisma(5, 7, 18, 0);
-						glTranslatef(124, 0, 0);
-						glColor3f(1, 1, 0);
-						prisma(5, 7, 18, 0);
-						glTranslatef(10, 0, -15);
-						glColor3f(1, 1, 1);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(0, 1, 0);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(1, 0, 0);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(0, 0, 1);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(1, 1, 0);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(0, 1, 1);
-						prisma(5, 7, 3, 0);
-					glPopMatrix();
-					glTranslatef(0, 0, 6);
-					glColor3f(0, 1, 0);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
+					/*bath izquierdo*/
+					glTranslatef(-6.25, 0, 15.5);
 					glColor3f(1, 0, 0);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
+					prisma(5.5, 12, 11, 0);
+					/*Ventana bath izquierdo*/
+					glPushMatrix();
+						glTranslatef(-2.75,0,1);
+						glColor3f(0.62,0.92,0.99);
+						prisma(0.1,6,4,0);
+					glPopMatrix();			
+					/*staff office izquierdo*/
+					glTranslatef(9, 0, 0);
 					glColor3f(0, 0, 1);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
-					glColor3f(1, 1, 0);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
+					prisma(12.5, 12, 11, 0);
+					/*staff office derecho*/
+					glTranslatef(53.5, 0, 0);
+					glColor3f(0, 0, 1);
+					prisma(12.5, 12, 11, 0);
+					/*bath derecho*/
+					glTranslatef(9, 0, 0);
+					glColor3f(1, 0, 0);
+					prisma(5.5, 12, 11, 0);
+				glPopMatrix();
+				glPushMatrix();
+					/*wc izquierdo*/
+					glTranslatef(-7,0,23);
+					glColor3f(1 ,0 ,1 );
+					prisma(4, 12, 4, 0);
+					/*Ventana bath izquierdo*/
+					glPushMatrix();
+						glTranslatef(-2, 0, -0.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 3, 0);
+					glPopMatrix();
+					glPushMatrix();
+						/*f.lavortry izquierdo*/
+						glTranslatef(5, 0, 2);
+						glColor3f(1, 0, 0);
+						prisma(6, 12, 8, 0);
+						/*f.lavortry derecha*/
+						glTranslatef(63, 0, 0);
+						glColor3f(1, 0, 0);
+						prisma(6, 12, 8, 0);
+						/*wc derecha*/
+						glTranslatef(5, 0, -2);
+						glColor3f(1, 0, 1);
+						prisma(4, 12, 4, 0);
+						/*wc derecha*/
+						glTranslatef(0, 0, 4);
+						glColor3f(0, 1, 1);
+						prisma(4, 12, 4, 0);
+					glPopMatrix();
+					/*wc izquierda*/
+					glTranslatef(0, 0, 4);
 					glColor3f(0, 1, 1);
-					prisma(5, 7, 3, 0);
+					prisma(4, 12, 4, 0);
+				glPopMatrix();
+				glPushMatrix();
+					/*wc izquierdo*/
+					glTranslatef(-6.5,0,30.5);
+					glColor3f(1, 1, 1);
+					prisma(5, 12, 3,0);
+					glPushMatrix();
+						/*m.lavortry izquierdo*/
+						glTranslatef(5, 0, 7.5);
+						glColor3f(1, 1, 0);
+						prisma(5, 12, 18, 0);
+						/*m.lavortry derecho*/
+						glTranslatef(62, 0, 0);
+						glColor3f(1, 1, 0);
+						prisma(5, 12, 18, 0);
+						/*wc derecho*/
+						glTranslatef(5, 0, -7.5);
+						glColor3f(1, 1, 1);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(0, 1, 0);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(1, 0, 0);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(0, 0, 1);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(1, 1, 0);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(0, 1, 1);
+						prisma(5, 12, 3, 0);
+					glPopMatrix();
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(0, 1, 0);
+					prisma(5, 12, 3, 0);
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(1, 0, 0);
+					prisma(5, 12, 3, 0);
+					/*Ventana bath izquierdo*/
+					glPushMatrix();
+						glTranslatef(-2.5, 0, 2.25);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7.5, 0);
+					glPopMatrix();
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(0, 0, 1);
+					prisma(5, 12, 3, 0);
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(1, 1, 0);
+					prisma(5, 12, 3, 0);
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(0, 1, 1);
+					prisma(5, 12, 3, 0);
 				glPopMatrix();			
 				glPushMatrix();
-					glTranslatef(-8, 0, 119);
+					/*dining hall*/
+					glTranslatef(-4, 0, 59.5);
 					glColor3f(1, 0, 1);
-					prisma(10, 7, 25, 0);
-					glTranslatef(134, 0, 0);
+					prisma(10, 12, 25, 0);
+					/*ventana dining hall*/
+					glPushMatrix();
+						glTranslatef(-5, 0, -2.25);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7.5, 0);
+					glPopMatrix();
+					/*archive*/
+					glTranslatef(67, 0, -7.5);
 					glColor3f(1, 0, 1);
-					prisma(10, 7, 25, 0);
+					prisma(10, 12, 10, 0);
+					/*computer net room*/
+					glTranslatef(0, 0, 10);
+					glColor3f(1, 0, 0);
+					prisma(10, 12, 10, 0);
+					/*telephone exchange*/
+					glTranslatef(0, 0, 10);
+					glColor3f(1, 1, 0);
+					prisma(10, 12, 10, 0);
+					/*electric room*/
+					glTranslatef(0, 0, 11);
+					glColor3f(1, 1, 1);
+					prisma(10, 12, 12, 0);
 				glPopMatrix();
 				glPushMatrix();
-					glTranslatef(-8,0,151);
+					/*kitchen*/
+					glTranslatef(-4,0,80.5);
 					glColor3f(1, 1, 1);
-					prisma(10, 7, 7, 0);
+					prisma(10, 12, 17, 0);
+					/*kitchen ventana*/
 					glPushMatrix();
-						glColor3f(1, 0, 0);
-						glTranslatef(19, 0, -43);
-						prisma(9, 7, 50, 0);
-						glColor3f(1, 0, 0);
-						glTranslatef(96, 0, 0);
-						prisma(9, 7, 50, 0);
+						glTranslatef(-5, 0, -3.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7, 0);
 					glPopMatrix();
-					glTranslatef(35, 0, -2);
-					glColor3f(0, 1, 0);
-					prisma(7, 7, 9, 0);
-					glTranslatef(64, 0, 0);
-					glColor3f(0, 1, 0);
-					prisma(7, 7, 9, 0);
-					glTranslatef(35, 0, 2);
-					glColor3f(1, 1, 1);
-					prisma(10, 7, 7, 0);
-				glPopMatrix();
+					glPushMatrix();
+						/*corridor izquierdo*/
+						glColor3f(1, 0, 0);
+						glTranslatef(9.5, 0, -22);
+						prisma(9, 12, 59, 0);
+						/*corridor derecho*/
+						glColor3f(1, 0, 0);
+						glTranslatef(48, 0, 0);
+						prisma(9, 12, 59, 0);
+					glPopMatrix();					
+				glPopMatrix();				
 			glPopMatrix();
+			glPushMatrix();
+				/*Corridor central*/
+				glTranslatef(-36,-3, 110.5);
+				glColor3f(0, 1, 0);
+				prisma(69, 12, 15, 0);
+				/*Ventanas corridor central*/
+				glPushMatrix();
+					/*Ventana izquierda*/
+					glTranslatef(-34.5, 0, 3.75);
+					glColor3f(0.62, 0.92, 0.99);
+					prisma(0.1, 6, 7.5, 0);
+					/*Ventana derecha*/
+					glTranslatef(34.5, 0, -2.25);
+					glColor3f(0.62, 0.92, 0.99);
+					prisma(0.1, 6, 7, 0);
+				glPopMatrix();
+				glPushMatrix();				
+					/*bath izquierdo*/
+					glTranslatef(-32,0,12.5);
+					glColor3f(1,1,0);
+					prisma(5,12,10,0);
+					/*Ventana izquierda*/
+					glPushMatrix();
+						glTranslatef(-2.5, 0, -1.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 3, 0);
+					glPopMatrix();
+						glPushMatrix();
+							/*suporting izquierdo*/
+							glTranslatef(8,0,0);
+							glColor3f(1,0,1);
+							prisma(12,12,10,0);
+							/*suporting derecho*/
+							glTranslatef(47.5, 0, 0);
+							glColor3f(1, 0, 1);
+							prisma(12, 12, 10, 0);
+						glPopMatrix();
+					/*bath derecho*/
+					glTranslatef(64, 0, 0);
+					glColor3f(1, 1, 0);
+					prisma(5, 12, 10, 0);
+				glPopMatrix();
+				/*falta agregar a la oficina del direct un cuadrito D:*/
+				glPushMatrix();
+					glTranslatef(-23,0,24.5);
+					glColor3f(0, 1, 1);
+					prisma(23, 12, 14, 0);
+					/*Ventana izquierda*/
+					glPushMatrix();	
+						/*Primer ventana*/
+						glTranslatef(-11.5, 0, -2);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 4, 0);
+						/*Segunda ventana*/
+						glTranslatef(0, 0, 7);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 4, 0);
+					glPopMatrix();
+					glPushMatrix();
+						/*rest room izquierda*/
+						glTranslatef(-5.5, 0, 17);
+						glColor3f(1, 0, 0);
+						prisma(12, 12, 20, 0);
+						/*ventna rest room izquierda*/
+						glPushMatrix();
+							/*Primer ventana*/
+							glTranslatef(-6, 0, -6);
+							glColor3f(0.62, 0.92, 0.99);
+							prisma(0.1, 6, 4, 0);						
+							/*Segunda ventana*/
+							glTranslatef(0, 0, 6);
+							glColor3f(0.62, 0.92, 0.99);
+							prisma(0.1, 6, 4, 0);
+							/*Tercer ventana*/
+							glTranslatef(0, 0, 6);
+							glColor3f(0.62, 0.92, 0.99);
+							prisma(0.1, 6, 4, 0);
+						glPopMatrix();
+						glPushMatrix();
+							/*drs izquierda*/
+							glTranslatef(-2.5, 0, 13.5);
+							glColor3f(1, 1, 1);
+							prisma(7, 12, 7, 0);
+							glPushMatrix();
+								/*managing director office de izquierda*/
+								glTranslatef(16.5, 0, 5.5);
+								glColor3f(1,0,1);
+								prisma(26, 12, 18, 0);
+							glPopMatrix();
+							/*bath izquierda*/
+							glTranslatef(0, 0, 9);
+							glColor3f(0, 1, 1);
+							prisma(7, 12, 11, 0);
+							/*ventana bath izquierda*/
+							glPushMatrix();
+								glTranslatef(-3.5, 0, 2);
+								glColor3f(0.62, 0.92, 0.99);
+								prisma(0.1, 6, 4, 0);
+							glPopMatrix();
+						glPopMatrix();
+						/*supporting staff*/
+						glTranslatef(11.5, 0, 0);
+						glColor3f(0, 0, 1);
+						prisma(11, 12, 20, 0);
+					glPopMatrix();
+				glPopMatrix();				
+			glPopMatrix();			
 		glPopMatrix();
 
 		/***************************************
-		*			Primer Piso
+		*			Primer piso
 		***************************************/
-		glPushMatrix(); 
-			glTranslatef(0, 14, 0);
-			glColor3f(1,1,1);
-			prisma(6,7,10,1);
-			glTranslatef(0, 0, 18);
-			glColor3f(1, 0, 0);
-			prisma(6, 7, 8, 1);
-			glTranslatef(26, 0,-10);
-			glColor3f(0, 0, 1);
-			prisma(20, 7, 18, 0);			
-			glTranslatef(32.5, 0, 0);
-			glColor3f(1, 1, 0);
-			prisma(12.5, 7, 18, 0);
-			glTranslatef(25, 0, 0);
-			glColor3f(0, 1, 1);			
-			prisma(12.5, 7, 18, 0);
-			glTranslatef(32.5, 0, 0);
-			glColor3f(1, 0, 1);
-			prisma(20, 7, 18, 0);
-			glTranslatef(26, 0, -8);
-			glColor3f(0, 1, 0);
-			prisma(6, 7, 10, 1);
-			glTranslatef(0, 0, 18);
-			glColor3f(1, 0, 0);
-			prisma(6, 7, 8, 1);
+		glPushMatrix();
+			glTranslatef(0,12,0);
+					/*Baño izquierda*/
+			glColor3f(0,1,0);
+			prisma(6, 12,10,1);
+			/*Ventana baño*/
 			glPushMatrix();
-				glTranslatef(-12, 0, 28);
+				glTranslatef(0,1,-5);
+				glColor3f(0.62,0.92,0.99);
+				prisma(3,6,0.1,0);
+			glPopMatrix();
+			/*DRS izquierda*/
+			glTranslatef(0, 0, 9);
+			glColor3f(1, 0, 0);
+			prisma(6, 12, 8, 1);
+			/*Oficina director izquierda*/
+			glTranslatef(13, 0,-5);
+			glColor3f(0, 0, 1);
+			prisma(20, 12, 18, 0);						
+			/*Ventana director izquierda*/
+			glPushMatrix();
+				glTranslatef(-4,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(6,6,0.1,0);
+			glPopMatrix();			
+			/*Supporting staff office izquierda*/
+			glTranslatef(16.25, 0, 0);
+			glColor3f(1, 1, 0);
+			prisma(12.5, 12, 18, 0);
+			/*Ventana supportin izquierda*/
+			glPushMatrix();
+				glTranslatef(1,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(7,6,0.1,0);
+			glPopMatrix();
+			/*Supporting staff office derecha*/
+			glTranslatef(12.5, 0, 0);
+			glColor3f(0, 1, 1);			
+			prisma(12.5, 12, 18, 0);
+			/*Ventana supportin derecha*/
+			glPushMatrix();
+				glTranslatef(-1,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(7,6,0.1,0);
+			glPopMatrix();
+			/*Director office derecha*/
+			glTranslatef(16.25, 0, 0);
+			glColor3f(1, 0, 1);
+			prisma(20, 12, 18, 0);
+			/*Ventana director derecha*/
+			glPushMatrix();
+				glTranslatef(4,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(6,6,0.1,0);
+			glPopMatrix();			
+			/*Bath derecha*/
+			glTranslatef(13, 0, -4);
+			glColor3f(0, 1, 0);
+			prisma(6, 12, 10, 1);
+			/*Ventana baño*/
+			glPushMatrix();
+				glTranslatef(0,1,-5);
+				glColor3f(0.62,0.92,0.99);
+				prisma(3,6,0.1,0);
+			glPopMatrix();
+			/*DRS derecha*/
+			glTranslatef(0, 0, 9);
+			glColor3f(1, 0, 0);
+			prisma(6, 12, 8, 1);
+			glPushMatrix();
+				/*Director office derecha*/
+				glTranslatef(-6, 0, 14);
 				glColor3f(0, 1, 0);
-				prisma(18, 7, 20, 1);	
-				glTranslatef(-118, 0, 0);
+				prisma(18, 12, 20, 1);	
+				/*Director office izquierda*/
+				glTranslatef(-59, 0, 0);
 				glColor3f(0, 1, 0);
-				prisma(18, 7, 20, 1);
+				prisma(18, 12, 20, 1);
+				/*	Ventana oficiona director izquierda*/
 				glPushMatrix();
-				glTranslatef(-12.5, 0, 31);
-				glColor3f(1, 0, 0);
-				prisma(5.5, 7, 11, 0);
-				glTranslatef(18, 0, 0);
-				glColor3f(0, 0, 1);
-				prisma(12.5, 7, 11, 0);
-				glTranslatef(107, 0, 0);
-				glColor3f(0, 0, 1);
-				prisma(12.5, 7, 11, 0);
-				glTranslatef(18, 0, 0);
-				glColor3f(1, 0, 0);
-				prisma(5.5, 7, 11, 0);
-				glPopMatrix();
+					glTranslatef(-9,0,0);
+					glColor3f(0.62,0.92,0.99);
+					prisma(0.1,6,8,0);
+				glPopMatrix();		
 				glPushMatrix();
-					glTranslatef(-14,0,46);
-					glColor3f(1 ,0 ,1 );
-					prisma(4, 7, 4, 0);
-					glPushMatrix();
-						glTranslatef(10, 0, 4);
-						glColor3f(1, 0, 0);
-						prisma(6, 7, 8, 0);
-						glTranslatef(126, 0, 0);
-						glColor3f(1, 0, 0);
-						prisma(6, 7, 8, 0);
-						glTranslatef(10, 0, -4);
-						glColor3f(1, 0, 1);
-						prisma(4, 7, 4, 0);
-						glTranslatef(0, 0, 8);
-						glColor3f(0, 1, 1);
-						prisma(4, 7, 4, 0);
-					glPopMatrix();
-					glTranslatef(0, 0, 8);
-					glColor3f(0, 1, 1);
-					prisma(4, 7, 4, 0);
-				glPopMatrix();
-				glPushMatrix();
-					glTranslatef(-13,0,61);
-					glColor3f(1, 1, 1);
-					prisma(5, 7, 3,0);
-					glPushMatrix();
-						glTranslatef(10, 0, 15);
-						glColor3f(1, 1, 0);
-						prisma(5, 7, 18, 0);
-						glTranslatef(124, 0, 0);
-						glColor3f(1, 1, 0);
-						prisma(5, 7, 18, 0);
-						glTranslatef(10, 0, -15);
-						glColor3f(1, 1, 1);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(0, 1, 0);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(1, 0, 0);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(0, 0, 1);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(1, 1, 0);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(0, 1, 1);
-						prisma(5, 7, 3, 0);
-					glPopMatrix();
-					glTranslatef(0, 0, 6);
-					glColor3f(0, 1, 0);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
+					/*bath izquierdo*/
+					glTranslatef(-6.25, 0, 15.5);
 					glColor3f(1, 0, 0);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
+					prisma(5.5, 12, 11, 0);
+					/*Ventana bath izquierdo*/
+					glPushMatrix();
+						glTranslatef(-2.75,0,1);
+						glColor3f(0.62,0.92,0.99);
+						prisma(0.1,6,4,0);
+					glPopMatrix();			
+					/*staff office izquierdo*/
+					glTranslatef(9, 0, 0);
 					glColor3f(0, 0, 1);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
-					glColor3f(1, 1, 0);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
+					prisma(12.5, 12, 11, 0);
+					/*staff office derecho*/
+					glTranslatef(53.5, 0, 0);
+					glColor3f(0, 0, 1);
+					prisma(12.5, 12, 11, 0);
+					/*bath derecho*/
+					glTranslatef(9, 0, 0);
+					glColor3f(1, 0, 0);
+					prisma(5.5, 12, 11, 0);
+				glPopMatrix();
+				glPushMatrix();
+					/*wc izquierdo*/
+					glTranslatef(-7,0,23);
+					glColor3f(1 ,0 ,1 );
+					prisma(4, 12, 4, 0);
+					/*Ventana bath izquierdo*/
+					glPushMatrix();
+						glTranslatef(-2, 0, -0.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 3, 0);
+					glPopMatrix();
+					glPushMatrix();
+						/*f.lavortry izquierdo*/
+						glTranslatef(5, 0, 2);
+						glColor3f(1, 0, 0);
+						prisma(6, 12, 8, 0);
+						/*f.lavortry derecha*/
+						glTranslatef(63, 0, 0);
+						glColor3f(1, 0, 0);
+						prisma(6, 12, 8, 0);
+						/*wc derecha*/
+						glTranslatef(5, 0, -2);
+						glColor3f(1, 0, 1);
+						prisma(4, 12, 4, 0);
+						/*wc derecha*/
+						glTranslatef(0, 0, 4);
+						glColor3f(0, 1, 1);
+						prisma(4, 12, 4, 0);
+					glPopMatrix();
+					/*wc izquierda*/
+					glTranslatef(0, 0, 4);
 					glColor3f(0, 1, 1);
-					prisma(5, 7, 3, 0);
+					prisma(4, 12, 4, 0);
+				glPopMatrix();
+				glPushMatrix();
+					/*wc izquierdo*/
+					glTranslatef(-6.5,0,30.5);
+					glColor3f(1, 1, 1);
+					prisma(5, 12, 3,0);
+					glPushMatrix();
+						/*m.lavortry izquierdo*/
+						glTranslatef(5, 0, 7.5);
+						glColor3f(1, 1, 0);
+						prisma(5, 12, 18, 0);
+						/*m.lavortry derecho*/
+						glTranslatef(62, 0, 0);
+						glColor3f(1, 1, 0);
+						prisma(5, 12, 18, 0);
+						/*wc derecho*/
+						glTranslatef(5, 0, -7.5);
+						glColor3f(1, 1, 1);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(0, 1, 0);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(1, 0, 0);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(0, 0, 1);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(1, 1, 0);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(0, 1, 1);
+						prisma(5, 12, 3, 0);
+					glPopMatrix();
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(0, 1, 0);
+					prisma(5, 12, 3, 0);
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(1, 0, 0);
+					prisma(5, 12, 3, 0);
+					/*Ventana bath izquierdo*/
+					glPushMatrix();
+						glTranslatef(-2.5, 0, 2.25);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7.5, 0);
+					glPopMatrix();
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(0, 0, 1);
+					prisma(5, 12, 3, 0);
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(1, 1, 0);
+					prisma(5, 12, 3, 0);
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(0, 1, 1);
+					prisma(5, 12, 3, 0);
 				glPopMatrix();			
 				glPushMatrix();
-					glTranslatef(-8, 0, 119);
+					/*dining hall*/
+					glTranslatef(-4, 0, 59.5);
 					glColor3f(1, 0, 1);
-					prisma(10, 7, 25, 0);
-					glTranslatef(134, 0, 0);
+					prisma(10, 12, 25, 0);
+					/*ventana dining hall*/
+					glPushMatrix();
+						glTranslatef(-5, 0, -2.25);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7.5, 0);
+					glPopMatrix();
+					/*archive*/
+					glTranslatef(67, 0, -7.5);
 					glColor3f(1, 0, 1);
-					prisma(10, 7, 25, 0);
+					prisma(10, 12, 10, 0);
+					/*computer net room*/
+					glTranslatef(0, 0, 10);
+					glColor3f(1, 0, 0);
+					prisma(10, 12, 10, 0);
+					/*telephone exchange*/
+					glTranslatef(0, 0, 10);
+					glColor3f(1, 1, 0);
+					prisma(10, 12, 10, 0);
+					/*electric room*/
+					glTranslatef(0, 0, 11);
+					glColor3f(1, 1, 1);
+					prisma(10, 12, 12, 0);
 				glPopMatrix();
 				glPushMatrix();
-					glTranslatef(-8,0,151);
+					/*kitchen*/
+					glTranslatef(-4,0,80.5);
 					glColor3f(1, 1, 1);
-					prisma(10, 7, 7, 0);
+					prisma(10, 12, 17, 0);
+					/*kitchen ventana*/
 					glPushMatrix();
-						glColor3f(1, 0, 0);
-						glTranslatef(19, 0, -43);
-						prisma(9, 7, 50, 0);
-						glColor3f(1, 0, 0);
-						glTranslatef(96, 0, 0);
-						prisma(9, 7, 50, 0);
+						glTranslatef(-5, 0, -3.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7, 0);
 					glPopMatrix();
-					glTranslatef(35, 0, -2);
-					glColor3f(0, 1, 0);
-					prisma(7, 7, 9, 0);
-					glTranslatef(64, 0, 0);
-					glColor3f(0, 1, 0);
-					prisma(7, 7, 9, 0);
-					glTranslatef(35, 0, 2);
-					glColor3f(1, 1, 1);
-					prisma(10, 7, 7, 0);
-				glPopMatrix();
+					glPushMatrix();
+						/*corridor izquierdo*/
+						glColor3f(1, 0, 0);
+						glTranslatef(9.5, 0, -22);
+						prisma(9, 12, 59, 0);
+						/*corridor derecho*/
+						glColor3f(1, 0, 0);
+						glTranslatef(48, 0, 0);
+						prisma(9, 12, 59, 0);
+					glPopMatrix();					
+				glPopMatrix();				
 			glPopMatrix();
+			glPushMatrix();
+				/*Corridor central*/
+				glTranslatef(-36,-3, 110.5);
+				glColor3f(0, 1, 0);
+				prisma(69, 12, 15, 0);
+				/*Ventanas corridor central*/
+				glPushMatrix();
+					/*Ventana izquierda*/
+					glTranslatef(-34.5, 0, 3.75);
+					glColor3f(0.62, 0.92, 0.99);
+					prisma(0.1, 6, 7.5, 0);
+					/*Ventana derecha*/
+					glTranslatef(34.5, 0, -2.25);
+					glColor3f(0.62, 0.92, 0.99);
+					prisma(0.1, 6, 7, 0);
+				glPopMatrix();
+				glPushMatrix();
+					/*bath izquierdo*/
+					glTranslatef(-32,0,12.5);
+					glColor3f(1,1,0);
+					prisma(5,12,10,0);
+					/*Ventana izquierda*/
+					glPushMatrix();
+						glTranslatef(-2.5, 0, -1.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 3, 0);
+					glPopMatrix();
+						glPushMatrix();
+							/*suporting izquierdo*/
+							glTranslatef(8,0,0);
+							glColor3f(1,0,1);
+							prisma(12,12,10,0);
+							/*suporting derecho*/
+							glTranslatef(47.5, 0, 0);
+							glColor3f(1, 0, 1);
+							prisma(12, 12, 10, 0);
+						glPopMatrix();
+					/*bath derecho*/
+					glTranslatef(64, 0, 0);
+					glColor3f(1, 1, 0);
+					prisma(5, 12, 10, 0);
+				glPopMatrix();
+				/*falta agregar a la oficina del direct un cuadrito D:*/
+				glPushMatrix();
+					glTranslatef(-23,0,24.5);
+					glColor3f(0, 1, 1);
+					prisma(23, 12, 14, 0);
+					/*Ventana izquierda*/
+					glPushMatrix();	
+						/*Primer ventana*/
+						glTranslatef(-11.5, 0, -2);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 4, 0);
+						/*Segunda ventana*/
+						glTranslatef(0, 0, 7);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 4, 0);
+					glPopMatrix();
+					glPushMatrix();
+						/*rest room*/
+						glTranslatef(-5.5, 0, 17);
+						glColor3f(1, 0, 0);
+						prisma(12, 12, 20, 0);
+						/*ventna rest room izquierda*/
+						glPushMatrix();
+							/*Primer ventana*/
+							glTranslatef(-6, 0, -6);
+							glColor3f(0.62, 0.92, 0.99);
+							prisma(0.1, 6, 4, 0);						
+							/*Segunda ventana*/
+							glTranslatef(0, 0, 6);
+							glColor3f(0.62, 0.92, 0.99);
+							prisma(0.1, 6, 4, 0);
+							/*Tercer ventana*/
+							glTranslatef(0, 0, 6);
+							glColor3f(0.62, 0.92, 0.99);
+							prisma(0.1, 6, 4, 0);
+						glPopMatrix();
+						glPushMatrix();
+							/*drs*/
+							glTranslatef(-2.5, 0, 13.5);
+							glColor3f(1, 1, 1);
+							prisma(7, 12, 7, 0);
+							glPushMatrix();
+								/*managing director office*/
+								glTranslatef(16.5, 0, 5.5);
+								glColor3f(1,0,1);
+								prisma(26, 12, 18, 0);
+							glPopMatrix();
+							/*bath*/
+							glTranslatef(0, 0, 9);
+							glColor3f(0, 1, 1);
+							prisma(7, 12, 11, 0);
+							/*ventana bath izquierda*/
+							glPushMatrix();
+								glTranslatef(-3.5, 0, 2);
+								glColor3f(0.62, 0.92, 0.99);
+								prisma(0.1, 6, 4, 0);
+							glPopMatrix();
+						glPopMatrix();
+
+						/*supporting staff*/
+						glTranslatef(11.5, 0, 0);
+						glColor3f(0, 0, 1);
+						prisma(11, 12, 20, 0);
+					glPopMatrix();
+				glPopMatrix();				
+			glPopMatrix();			
 		glPopMatrix();
 		/***************************************
-		*			Segundo Piso
+		*			Segundo piso
 		***************************************/
-		glPushMatrix(); 
-			glTranslatef(0, 14, 0);
-			glColor3f(1,0,1);
-			prisma(6,7,10,1);
-			glTranslatef(0, 0, 18);
-			glColor3f(1, 0, 0);
-			prisma(6, 7, 8, 1);
-			glTranslatef(26, 0,-10);
-			glColor3f(0, 0, 1);
-			prisma(20, 7, 18, 0);			
-			glTranslatef(32.5, 0, 0);
-			glColor3f(1, 1, 0);
-			prisma(12.5, 7, 18, 0);
-			glTranslatef(25, 0, 0);
-			glColor3f(0, 1, 1);			
-			prisma(12.5, 7, 18, 0);
-			glTranslatef(32.5, 0, 0);
-			glColor3f(1, 0, 1);
-			prisma(20, 7, 18, 0);
-			glTranslatef(26, 0, -8);
-			glColor3f(0, 1, 0);
-			prisma(6, 7, 10, 1);
-			glTranslatef(0, 0, 18);
-			glColor3f(1, 0, 0);
-			prisma(6, 7, 8, 1);
+		glPushMatrix();
+			glTranslatef(0,24,0);
+						/*Baño izquierda*/
+			glColor3f(0,1,0);
+			prisma(6, 12,10,1);
+			/*Ventana baño*/
 			glPushMatrix();
-				glTranslatef(-12, 0, 28);
+				glTranslatef(0,1,-5);
+				glColor3f(0.62,0.92,0.99);
+				prisma(3,6,0.1,0);
+			glPopMatrix();
+			/*DRS izquierda*/
+			glTranslatef(0, 0, 9);
+			glColor3f(1, 0, 0);
+			prisma(6, 12, 8, 1);
+			/*Oficina director izquierda*/
+			glTranslatef(13, 0,-5);
+			glColor3f(0, 0, 1);
+			prisma(20, 12, 18, 0);						
+			/*Ventana director izquierda*/
+			glPushMatrix();
+				glTranslatef(-4,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(6,6,0.1,0);
+			glPopMatrix();			
+			/*Supporting staff office izquierda*/
+			glTranslatef(16.25, 0, 0);
+			glColor3f(1, 1, 0);
+			prisma(12.5, 12, 18, 0);
+			/*Ventana supportin izquierda*/
+			glPushMatrix();
+				glTranslatef(1,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(7,6,0.1,0);
+			glPopMatrix();
+			/*Supporting staff office derecha*/
+			glTranslatef(12.5, 0, 0);
+			glColor3f(0, 1, 1);			
+			prisma(12.5, 12, 18, 0);
+			/*Ventana supportin derecha*/
+			glPushMatrix();
+				glTranslatef(-1,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(7,6,0.1,0);
+			glPopMatrix();
+			/*Director office derecha*/
+			glTranslatef(16.25, 0, 0);
+			glColor3f(1, 0, 1);
+			prisma(20, 12, 18, 0);
+			/*Ventana director derecha*/
+			glPushMatrix();
+				glTranslatef(4,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(6,6,0.1,0);
+			glPopMatrix();			
+			/*Bath derecha*/
+			glTranslatef(13, 0, -4);
+			glColor3f(0, 1, 0);
+			prisma(6, 12, 10, 1);
+			/*Ventana baño*/
+			glPushMatrix();
+				glTranslatef(0,1,-5);
+				glColor3f(0.62,0.92,0.99);
+				prisma(3,6,0.1,0);
+			glPopMatrix();
+			/*DRS derecha*/
+			glTranslatef(0, 0, 9);
+			glColor3f(1, 0, 0);
+			prisma(6, 12, 8, 1);
+			glPushMatrix();
+				/*Director office derecha*/
+				glTranslatef(-6, 0, 14);
 				glColor3f(0, 1, 0);
-				prisma(18, 7, 20, 1);	
-				glTranslatef(-118, 0, 0);
+				prisma(18, 12, 20, 1);	
+				/*Director office izquierda*/
+				glTranslatef(-59, 0, 0);
 				glColor3f(0, 1, 0);
-				prisma(18, 7, 20, 1);
+				prisma(18, 12, 20, 1);
+				/*	Ventana oficiona director izquierda*/
 				glPushMatrix();
-				glTranslatef(-12.5, 0, 31);
-				glColor3f(1, 0, 0);
-				prisma(5.5, 7, 11, 0);
-				glTranslatef(18, 0, 0);
-				glColor3f(0, 0, 1);
-				prisma(12.5, 7, 11, 0);
-				glTranslatef(107, 0, 0);
-				glColor3f(0, 0, 1);
-				prisma(12.5, 7, 11, 0);
-				glTranslatef(18, 0, 0);
-				glColor3f(1, 0, 0);
-				prisma(5.5, 7, 11, 0);
-				glPopMatrix();
+					glTranslatef(-9,0,0);
+					glColor3f(0.62,0.92,0.99);
+					prisma(0.1,6,8,0);
+				glPopMatrix();		
 				glPushMatrix();
-					glTranslatef(-14,0,46);
-					glColor3f(1 ,0 ,1 );
-					prisma(4, 7, 4, 0);
-					glPushMatrix();
-						glTranslatef(10, 0, 4);
-						glColor3f(1, 0, 0);
-						prisma(6, 7, 8, 0);
-						glTranslatef(126, 0, 0);
-						glColor3f(1, 0, 0);
-						prisma(6, 7, 8, 0);
-						glTranslatef(10, 0, -4);
-						glColor3f(1, 0, 1);
-						prisma(4, 7, 4, 0);
-						glTranslatef(0, 0, 8);
-						glColor3f(0, 1, 1);
-						prisma(4, 7, 4, 0);
-					glPopMatrix();
-					glTranslatef(0, 0, 8);
-					glColor3f(0, 1, 1);
-					prisma(4, 7, 4, 0);
-				glPopMatrix();
-				glPushMatrix();
-					glTranslatef(-13,0,61);
-					glColor3f(1, 1, 1);
-					prisma(5, 7, 3,0);
-					glPushMatrix();
-						glTranslatef(10, 0, 15);
-						glColor3f(1, 1, 0);
-						prisma(5, 7, 18, 0);
-						glTranslatef(124, 0, 0);
-						glColor3f(1, 1, 0);
-						prisma(5, 7, 18, 0);
-						glTranslatef(10, 0, -15);
-						glColor3f(1, 1, 1);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(0, 1, 0);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(1, 0, 0);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(0, 0, 1);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(1, 1, 0);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(0, 1, 1);
-						prisma(5, 7, 3, 0);
-					glPopMatrix();
-					glTranslatef(0, 0, 6);
-					glColor3f(0, 1, 0);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
+					/*bath izquierdo*/
+					glTranslatef(-6.25, 0, 15.5);
 					glColor3f(1, 0, 0);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
+					prisma(5.5, 12, 11, 0);
+						/*Ventana bath izquierdo*/
+					glPushMatrix();
+						glTranslatef(-2.75,0,1);
+						glColor3f(0.62,0.92,0.99);
+						prisma(0.1,6,4,0);
+					glPopMatrix();			
+					/*staff office izquierdo*/
+					glTranslatef(9, 0, 0);
 					glColor3f(0, 0, 1);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
-					glColor3f(1, 1, 0);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
+					prisma(12.5, 12, 11, 0);
+					/*staff office derecho*/
+					glTranslatef(53.5, 0, 0);
+					glColor3f(0, 0, 1);
+					prisma(12.5, 12, 11, 0);
+					/*bath derecho*/
+					glTranslatef(9, 0, 0);
+					glColor3f(1, 0, 0);
+					prisma(5.5, 12, 11, 0);
+				glPopMatrix();
+				glPushMatrix();
+					/*wc izquierdo*/
+					glTranslatef(-7,0,23);
+					glColor3f(1 ,0 ,1 );
+					prisma(4, 12, 4, 0);
+					glPushMatrix();
+					/*Ventana bath izquierdo*/
+					glPushMatrix();
+						glTranslatef(-2, 0, -0.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 3, 0);
+					glPopMatrix();
+						/*f.lavortry izquierdo*/
+						glTranslatef(5, 0, 2);
+						glColor3f(1, 0, 0);
+						prisma(6, 12, 8, 0);
+						/*f.lavortry derecha*/
+						glTranslatef(63, 0, 0);
+						glColor3f(1, 0, 0);
+						prisma(6, 12, 8, 0);
+						/*wc derecha*/
+						glTranslatef(5, 0, -2);
+						glColor3f(1, 0, 1);
+						prisma(4, 12, 4, 0);
+						/*wc derecha*/
+						glTranslatef(0, 0, 4);
+						glColor3f(0, 1, 1);
+						prisma(4, 12, 4, 0);
+					glPopMatrix();
+					/*wc izquierda*/
+					glTranslatef(0, 0, 4);
 					glColor3f(0, 1, 1);
-					prisma(5, 7, 3, 0);
+					prisma(4, 12, 4, 0);
+				glPopMatrix();
+				glPushMatrix();
+					/*wc izquierdo*/
+					glTranslatef(-6.5,0,30.5);
+					glColor3f(1, 1, 1);
+					prisma(5, 12, 3,0);
+					glPushMatrix();
+						/*m.lavortry izquierdo*/
+						glTranslatef(5, 0, 7.5);
+						glColor3f(1, 1, 0);
+						prisma(5, 12, 18, 0);
+						/*m.lavortry derecho*/
+						glTranslatef(62, 0, 0);
+						glColor3f(1, 1, 0);
+						prisma(5, 12, 18, 0);
+						/*wc derecho*/
+						glTranslatef(5, 0, -7.5);
+						glColor3f(1, 1, 1);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(0, 1, 0);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(1, 0, 0);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(0, 0, 1);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(1, 1, 0);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(0, 1, 1);
+						prisma(5, 12, 3, 0);
+					glPopMatrix();
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(0, 1, 0);
+					prisma(5, 12, 3, 0);
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(1, 0, 0);
+					prisma(5, 12, 3, 0);
+					/*Ventana bath izquierdo*/
+					glPushMatrix();
+						glTranslatef(-2.5, 0, 2.25);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7.5, 0);
+					glPopMatrix();
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(0, 0, 1);
+					prisma(5, 12, 3, 0);
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(1, 1, 0);
+					prisma(5, 12, 3, 0);
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(0, 1, 1);
+					prisma(5, 12, 3, 0);
 				glPopMatrix();			
 				glPushMatrix();
-					glTranslatef(-8, 0, 119);
+					/*dining hall*/
+					glTranslatef(-4, 0, 59.5);
 					glColor3f(1, 0, 1);
-					prisma(10, 7, 25, 0);
-					glTranslatef(134, 0, 0);
+					prisma(10, 12, 25, 0);
+					/*ventana dining hall*/
+					glPushMatrix();
+						glTranslatef(-5, 0, -2.25);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7.5, 0);
+					glPopMatrix();
+					/*archive*/
+					glTranslatef(67, 0, -7.5);
 					glColor3f(1, 0, 1);
-					prisma(10, 7, 25, 0);
+					prisma(10, 12, 10, 0);
+					/*computer net room*/
+					glTranslatef(0, 0, 10);
+					glColor3f(1, 0, 0);
+					prisma(10, 12, 10, 0);
+					/*telephone exchange*/
+					glTranslatef(0, 0, 10);
+					glColor3f(1, 1, 0);
+					prisma(10, 12, 10, 0);
+					/*electric room*/
+					glTranslatef(0, 0, 11);
+					glColor3f(1, 1, 1);
+					prisma(10, 12, 12, 0);
 				glPopMatrix();
 				glPushMatrix();
-					glTranslatef(-8,0,151);
+					/*kitchen*/
+					glTranslatef(-4,0,80.5);
 					glColor3f(1, 1, 1);
-					prisma(10, 7, 7, 0);
+					prisma(10, 12, 17, 0);
+					/*kitchen ventana*/
 					glPushMatrix();
-						glColor3f(1, 0, 0);
-						glTranslatef(19, 0, -43);
-						prisma(9, 7, 50, 0);
-						glColor3f(1, 0, 0);
-						glTranslatef(96, 0, 0);
-						prisma(9, 7, 50, 0);
+						glTranslatef(-5, 0, -3.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7, 0);
 					glPopMatrix();
-					glTranslatef(35, 0, -2);
-					glColor3f(0, 1, 0);
-					prisma(7, 7, 9, 0);
-					glTranslatef(64, 0, 0);
-					glColor3f(0, 1, 0);
-					prisma(7, 7, 9, 0);
-					glTranslatef(35, 0, 2);
-					glColor3f(1, 1, 1);
-					prisma(10, 7, 7, 0);
-				glPopMatrix();
+					glPushMatrix();
+						/*corridor izquierdo*/
+						glColor3f(1, 0, 0);
+						glTranslatef(9.5, 0, -22);
+						prisma(9, 12, 59, 0);
+						/*corridor derecho*/
+						glColor3f(1, 0, 0);
+						glTranslatef(48, 0, 0);
+						prisma(9, 12, 59, 0);
+					glPopMatrix();					
+				glPopMatrix();				
 			glPopMatrix();
+			glPushMatrix();
+				/*Corridor central*/
+				glTranslatef(-36,-3, 110.5);
+				glColor3f(0, 1, 0);
+				prisma(69, 12, 15, 0);
+				/*Ventanas corridor central*/
+				glPushMatrix();
+					/*Ventana izquierda*/
+					glTranslatef(-34.5, 0, 3.75);
+					glColor3f(0.62, 0.92, 0.99);
+					prisma(0.1, 6, 7.5, 0);
+					/*Ventana derecha*/
+					glTranslatef(34.5, 0, -2.25);
+					glColor3f(0.62, 0.92, 0.99);
+					prisma(0.1, 6, 7, 0);
+				glPopMatrix();
+				glPushMatrix();
+					/*bath izquierdo*/
+					glTranslatef(-32,0,12.5);
+					glColor3f(1,1,0);
+					prisma(5,12,10,0);
+					/*Ventana izquierda*/
+					glPushMatrix();
+						glTranslatef(-2.5, 0, -1.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 3, 0);
+					glPopMatrix();
+						glPushMatrix();
+							/*suporting izquierdo*/
+							glTranslatef(8,0,0);
+							glColor3f(1,0,1);
+							prisma(12,12,10,0);
+							/*suporting derecho*/
+							glTranslatef(47.5, 0, 0);
+							glColor3f(1, 0, 1);
+							prisma(12, 12, 10, 0);
+						glPopMatrix();
+					/*bath derecho*/
+					glTranslatef(64, 0, 0);
+					glColor3f(1, 1, 0);
+					prisma(5, 12, 10, 0);
+				glPopMatrix();
+				/*falta agregar a la oficina del direct un cuadrito D:*/
+				glPushMatrix();
+					glTranslatef(-23,0,24.5);
+					glColor3f(0, 1, 1);
+					prisma(23, 12, 14, 0);
+					/*Ventana izquierda*/
+					glPushMatrix();	
+						/*Primer ventana*/
+						glTranslatef(-11.5, 0, -2);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 4, 0);
+						/*Segunda ventana*/
+						glTranslatef(0, 0, 7);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 4, 0);
+					glPopMatrix();
+					glPushMatrix();
+						/*rest room*/
+						glTranslatef(-5.5, 0, 17);
+						glColor3f(1, 0, 0);
+						prisma(12, 12, 20, 0);
+						/*ventna rest room izquierda*/
+						glPushMatrix();
+							/*Primer ventana*/
+							glTranslatef(-6, 0, -6);
+							glColor3f(0.62, 0.92, 0.99);
+							prisma(0.1, 6, 4, 0);						
+							/*Segunda ventana*/
+							glTranslatef(0, 0, 6);
+							glColor3f(0.62, 0.92, 0.99);
+							prisma(0.1, 6, 4, 0);
+							/*Tercer ventana*/
+							glTranslatef(0, 0, 6);
+							glColor3f(0.62, 0.92, 0.99);
+							prisma(0.1, 6, 4, 0);
+						glPopMatrix();
+						glPushMatrix();
+							/*drs*/
+							glTranslatef(-2.5, 0, 13.5);
+							glColor3f(1, 1, 1);
+							prisma(7, 12, 7, 0);
+							glPushMatrix();
+								/*managing director office*/
+								glTranslatef(16.5, 0, 5.5);
+								glColor3f(1,0,1);
+								prisma(26, 12, 18, 0);
+							glPopMatrix();
+							/*bath*/
+							glTranslatef(0, 0, 9);
+							glColor3f(0, 1, 1);
+							prisma(7, 12, 11, 0);
+							/*ventana bath izquierda*/
+							glPushMatrix();
+								glTranslatef(-3.5, 0, 2);
+								glColor3f(0.62, 0.92, 0.99);
+								prisma(0.1, 6, 4, 0);
+							glPopMatrix();
+						glPopMatrix();
+
+						/*supporting staff*/
+						glTranslatef(11.5, 0, 0);
+						glColor3f(0, 0, 1);
+						prisma(11, 12, 20, 0);
+					glPopMatrix();
+				glPopMatrix();				
+			glPopMatrix();			
 		glPopMatrix();
 		/***************************************
-		*			Tercer Piso
+		*			Tercer Piso 
 		***************************************/
-		glPushMatrix(); 
-			glTranslatef(0, 28, 0);
-			glColor3f(1,1,0);
-			prisma(6,7,10,1);
-			glTranslatef(0, 0, 18);
-			glColor3f(1, 0, 0);
-			prisma(6, 7, 8, 1);
-			glTranslatef(26, 0,-10);
-			glColor3f(0, 0, 1);
-			prisma(20, 7, 18, 0);			
-			glTranslatef(32.5, 0, 0);
-			glColor3f(1, 1, 0);
-			prisma(12.5, 7, 18, 0);
-			glTranslatef(25, 0, 0);
-			glColor3f(0, 1, 1);			
-			prisma(12.5, 7, 18, 0);
-			glTranslatef(32.5, 0, 0);
-			glColor3f(1, 0, 1);
-			prisma(20, 7, 18, 0);
-			glTranslatef(26, 0, -8);
-			glColor3f(0, 1, 0);
-			prisma(6, 7, 10, 1);
-			glTranslatef(0, 0, 18);
-			glColor3f(1, 0, 0);
-			prisma(6, 7, 8, 1);
+		glPushMatrix();
+			glTranslatef(0, 36, 0);
+						/*Baño izquierda*/
+			glColor3f(0,1,0);
+			prisma(6, 12,10,1);
+			/*Ventana baño*/
 			glPushMatrix();
-				glTranslatef(-12, 0, 28);
+				glTranslatef(0,1,-5);
+				glColor3f(0.62,0.92,0.99);
+				prisma(3,6,0.1,0);
+			glPopMatrix();
+			/*DRS izquierda*/
+			glTranslatef(0, 0, 9);
+			glColor3f(1, 0, 0);
+			prisma(6, 12, 8, 1);
+			/*Oficina director izquierda*/
+			glTranslatef(13, 0,-5);
+			glColor3f(0, 0, 1);
+			prisma(20, 12, 18, 0);						
+			/*Ventana director izquierda*/
+			glPushMatrix();
+				glTranslatef(-4,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(6,6,0.1,0);
+			glPopMatrix();			
+			/*Supporting staff office izquierda*/
+			glTranslatef(16.25, 0, 0);
+			glColor3f(1, 1, 0);
+			prisma(12.5, 12, 18, 0);
+			/*Ventana supportin izquierda*/
+			glPushMatrix();
+				glTranslatef(1,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(7,6,0.1,0);
+			glPopMatrix();
+			/*Supporting staff office derecha*/
+			glTranslatef(12.5, 0, 0);
+			glColor3f(0, 1, 1);			
+			prisma(12.5, 12, 18, 0);
+			/*Ventana supportin derecha*/
+			glPushMatrix();
+				glTranslatef(-1,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(7,6,0.1,0);
+			glPopMatrix();
+			/*Director office derecha*/
+			glTranslatef(16.25, 0, 0);
+			glColor3f(1, 0, 1);
+			prisma(20, 12, 18, 0);
+			/*Ventana director derecha*/
+			glPushMatrix();
+				glTranslatef(4,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(6,6,0.1,0);
+			glPopMatrix();			
+			/*Bath derecha*/
+			glTranslatef(13, 0, -4);
+			glColor3f(0, 1, 0);
+			prisma(6, 12, 10, 1);
+			/*Ventana baño*/
+			glPushMatrix();
+				glTranslatef(0,1,-5);
+				glColor3f(0.62,0.92,0.99);
+				prisma(3,6,0.1,0);
+			glPopMatrix();
+			/*DRS derecha*/
+			glTranslatef(0, 0, 9);
+			glColor3f(1, 0, 0);
+			prisma(6, 12, 8, 1);
+			glPushMatrix();
+				/*Director office derecha*/
+				glTranslatef(-6, 0, 14);
 				glColor3f(0, 1, 0);
-				prisma(18, 7, 20, 1);	
-				glTranslatef(-118, 0, 0);
+				prisma(18, 12, 20, 1);	
+				/*Director office izquierda*/
+				glTranslatef(-59, 0, 0);
 				glColor3f(0, 1, 0);
-				prisma(18, 7, 20, 1);
+				prisma(18, 12, 20, 1);
+				/*	Ventana oficiona director izquierda*/
 				glPushMatrix();
-				glTranslatef(-12.5, 0, 31);
-				glColor3f(1, 0, 0);
-				prisma(5.5, 7, 11, 0);
-				glTranslatef(18, 0, 0);
-				glColor3f(0, 0, 1);
-				prisma(12.5, 7, 11, 0);
-				glTranslatef(107, 0, 0);
-				glColor3f(0, 0, 1);
-				prisma(12.5, 7, 11, 0);
-				glTranslatef(18, 0, 0);
-				glColor3f(1, 0, 0);
-				prisma(5.5, 7, 11, 0);
-				glPopMatrix();
+					glTranslatef(-9,0,0);
+					glColor3f(0.62,0.92,0.99);
+					prisma(0.1,6,8,0);
+				glPopMatrix();		
 				glPushMatrix();
-					glTranslatef(-14,0,46);
-					glColor3f(1 ,0 ,1 );
-					prisma(4, 7, 4, 0);
-					glPushMatrix();
-						glTranslatef(10, 0, 4);
-						glColor3f(1, 0, 0);
-						prisma(6, 7, 8, 0);
-						glTranslatef(126, 0, 0);
-						glColor3f(1, 0, 0);
-						prisma(6, 7, 8, 0);
-						glTranslatef(10, 0, -4);
-						glColor3f(1, 0, 1);
-						prisma(4, 7, 4, 0);
-						glTranslatef(0, 0, 8);
-						glColor3f(0, 1, 1);
-						prisma(4, 7, 4, 0);
-					glPopMatrix();
-					glTranslatef(0, 0, 8);
-					glColor3f(0, 1, 1);
-					prisma(4, 7, 4, 0);
-				glPopMatrix();
-				glPushMatrix();
-					glTranslatef(-13,0,61);
-					glColor3f(1, 1, 1);
-					prisma(5, 7, 3,0);
-					glPushMatrix();
-						glTranslatef(10, 0, 15);
-						glColor3f(1, 1, 0);
-						prisma(5, 7, 18, 0);
-						glTranslatef(124, 0, 0);
-						glColor3f(1, 1, 0);
-						prisma(5, 7, 18, 0);
-						glTranslatef(10, 0, -15);
-						glColor3f(1, 1, 1);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(0, 1, 0);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(1, 0, 0);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(0, 0, 1);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(1, 1, 0);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(0, 1, 1);
-						prisma(5, 7, 3, 0);
-					glPopMatrix();
-					glTranslatef(0, 0, 6);
-					glColor3f(0, 1, 0);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
+					/*bath izquierdo*/
+					glTranslatef(-6.25, 0, 15.5);
 					glColor3f(1, 0, 0);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
+					prisma(5.5, 12, 11, 0);
+					/*staff office izquierdo*/
+					glTranslatef(9, 0, 0);
 					glColor3f(0, 0, 1);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
-					glColor3f(1, 1, 0);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
+					prisma(12.5, 12, 11, 0);
+					/*staff office derecho*/
+					glTranslatef(53.5, 0, 0);
+					glColor3f(0, 0, 1);
+					prisma(12.5, 12, 11, 0);
+					/*bath derecho*/
+					glTranslatef(9, 0, 0);
+					glColor3f(1, 0, 0);
+					prisma(5.5, 12, 11, 0);
+				glPopMatrix();
+				glPushMatrix();
+					/*wc izquierdo*/
+					glTranslatef(-7,0,23);
+					glColor3f(1 ,0 ,1 );
+					prisma(4, 12, 4, 0);
+					glPushMatrix();
+						/*f.lavortry izquierdo*/
+						glTranslatef(5, 0, 2);
+						glColor3f(1, 0, 0);
+						prisma(6, 12, 8, 0);
+						/*f.lavortry derecha*/
+						glTranslatef(63, 0, 0);
+						glColor3f(1, 0, 0);
+						prisma(6, 12, 8, 0);
+						/*wc derecha*/
+						glTranslatef(5, 0, -2);
+						glColor3f(1, 0, 1);
+						prisma(4, 12, 4, 0);
+						/*wc derecha*/
+						glTranslatef(0, 0, 4);
+						glColor3f(0, 1, 1);
+						prisma(4, 12, 4, 0);
+					glPopMatrix();
+					/*wc izquierda*/
+					glTranslatef(0, 0, 4);
 					glColor3f(0, 1, 1);
-					prisma(5, 7, 3, 0);
+					prisma(4, 12, 4, 0);
+				glPopMatrix();
+				glPushMatrix();
+					/*wc izquierdo*/
+					glTranslatef(-6.5,0,30.5);
+					glColor3f(1, 1, 1);
+					prisma(5, 12, 3,0);
+					glPushMatrix();
+						/*m.lavortry izquierdo*/
+						glTranslatef(5, 0, 7.5);
+						glColor3f(1, 1, 0);
+						prisma(5, 12, 18, 0);
+						/*m.lavortry derecho*/
+						glTranslatef(62, 0, 0);
+						glColor3f(1, 1, 0);
+						prisma(5, 12, 18, 0);
+						/*wc derecho*/
+						glTranslatef(5, 0, -7.5);
+						glColor3f(1, 1, 1);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(0, 1, 0);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(1, 0, 0);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(0, 0, 1);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(1, 1, 0);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(0, 1, 1);
+						prisma(5, 12, 3, 0);
+					glPopMatrix();
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(0, 1, 0);
+					prisma(5, 12, 3, 0);
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(1, 0, 0);
+					prisma(5, 12, 3, 0);
+					/*Ventana bath izquierdo*/
+					glPushMatrix();
+						glTranslatef(-2.5, 0, 2.25);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7.5, 0);
+					glPopMatrix();
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(0, 0, 1);
+					prisma(5, 12, 3, 0);
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(1, 1, 0);
+					prisma(5, 12, 3, 0);
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(0, 1, 1);
+					prisma(5, 12, 3, 0);
 				glPopMatrix();			
 				glPushMatrix();
-					glTranslatef(-8, 0, 119);
+					/*dining hall*/
+					glTranslatef(-4, 0, 59.5);
 					glColor3f(1, 0, 1);
-					prisma(10, 7, 25, 0);
-					glTranslatef(134, 0, 0);
+					prisma(10, 12, 25, 0);
+					/*ventana dining hall*/
+					glPushMatrix();
+						glTranslatef(-5, 0, -2.25);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7.5, 0);
+					glPopMatrix();
+					/*archive*/
+					glTranslatef(67, 0, -7.5);
 					glColor3f(1, 0, 1);
-					prisma(10, 7, 25, 0);
+					prisma(10, 12, 10, 0);
+					/*computer net room*/
+					glTranslatef(0, 0, 10);
+					glColor3f(1, 0, 0);
+					prisma(10, 12, 10, 0);
+					/*telephone exchange*/
+					glTranslatef(0, 0, 10);
+					glColor3f(1, 1, 0);
+					prisma(10, 12, 10, 0);
+					/*electric room*/
+					glTranslatef(0, 0, 11);
+					glColor3f(1, 1, 1);
+					prisma(10, 12, 12, 0);
 				glPopMatrix();
 				glPushMatrix();
-					glTranslatef(-8,0,151);
+					/*kitchen*/
+					glTranslatef(-4,0,80.5);
 					glColor3f(1, 1, 1);
-					prisma(10, 7, 7, 0);
+					prisma(10, 12, 17, 0);
+					/*kitchen ventana*/
 					glPushMatrix();
-						glColor3f(1, 0, 0);
-						glTranslatef(19, 0, -43);
-						prisma(9, 7, 50, 0);
-						glColor3f(1, 0, 0);
-						glTranslatef(96, 0, 0);
-						prisma(9, 7, 50, 0);
+						glTranslatef(-5, 0, -3.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7, 0);
 					glPopMatrix();
-					glTranslatef(35, 0, -2);
-					glColor3f(0, 1, 0);
-					prisma(7, 7, 9, 0);
-					glTranslatef(64, 0, 0);
-					glColor3f(0, 1, 0);
-					prisma(7, 7, 9, 0);
-					glTranslatef(35, 0, 2);
-					glColor3f(1, 1, 1);
-					prisma(10, 7, 7, 0);
-				glPopMatrix();
+					glPushMatrix();
+						/*corridor izquierdo*/
+						glColor3f(1, 0, 0);
+						glTranslatef(9.5, 0, -22);
+						prisma(9, 12, 59, 0);
+						/*corridor derecho*/
+						glColor3f(1, 0, 0);
+						glTranslatef(48, 0, 0);
+						prisma(9, 12, 59, 0);
+					glPopMatrix();					
+				glPopMatrix();				
 			glPopMatrix();
+			glPushMatrix();
+				/*Corridor central*/
+				glTranslatef(-36,-3, 110.5);
+				glColor3f(0, 1, 0);
+				prisma(69, 12, 15, 0);
+				/*Ventanas corridor central*/
+				glPushMatrix();
+					/*Ventana izquierda*/
+					glTranslatef(-34.5, 0, 3.75);
+					glColor3f(0.62, 0.92, 0.99);
+					prisma(0.1, 6, 7.5, 0);
+					/*Ventana derecha*/
+					glTranslatef(34.5, 0, -2.25);
+					glColor3f(0.62, 0.92, 0.99);
+					prisma(0.1, 6, 7, 0);
+				glPopMatrix();
+				glPushMatrix();
+					/*bath izquierdo*/
+					glTranslatef(-32,0,12.5);
+					glColor3f(1,1,0);
+					prisma(5,12,10,0);
+					/*Ventana izquierda*/
+					glPushMatrix();
+						glTranslatef(-2.5, 0, -1.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 3, 0);
+					glPopMatrix();
+						glPushMatrix();
+							/*suporting izquierdo*/
+							glTranslatef(8,0,0);
+							glColor3f(1,0,1);
+							prisma(12,12,10,0);
+							/*suporting derecho*/
+							glTranslatef(47.5, 0, 0);
+							glColor3f(1, 0, 1);
+							prisma(12, 12, 10, 0);
+						glPopMatrix();
+					/*bath derecho*/
+					glTranslatef(64, 0, 0);
+					glColor3f(1, 1, 0);
+					prisma(5, 12, 10, 0);
+				glPopMatrix();
+				/*falta agregar a la oficina del direct un cuadrito D:*/
+				glPushMatrix();
+					glTranslatef(-23,0,24.5);
+					glColor3f(0, 1, 1);
+					prisma(23, 12, 14, 0);
+					/*Ventana izquierda*/
+					glPushMatrix();	
+						/*Primer ventana*/
+						glTranslatef(-11.5, 0, -2);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 4, 0);
+						/*Segunda ventana*/
+						glTranslatef(0, 0, 7);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 4, 0);
+					glPopMatrix();
+					glPushMatrix();
+						/*rest room*/
+						glTranslatef(-5.5, 0, 17);
+						glColor3f(1, 0, 0);
+						prisma(12, 12, 20, 0);
+						/*ventna rest room izquierda*/
+						glPushMatrix();
+							/*Primer ventana*/
+							glTranslatef(-6, 0, -6);
+							glColor3f(0.62, 0.92, 0.99);
+							prisma(0.1, 6, 4, 0);						
+							/*Segunda ventana*/
+							glTranslatef(0, 0, 6);
+							glColor3f(0.62, 0.92, 0.99);
+							prisma(0.1, 6, 4, 0);
+							/*Tercer ventana*/
+							glTranslatef(0, 0, 6);
+							glColor3f(0.62, 0.92, 0.99);
+							prisma(0.1, 6, 4, 0);
+						glPopMatrix();
+						glPushMatrix();
+							/*drs*/
+							glTranslatef(-2.5, 0, 13.5);
+							glColor3f(1, 1, 1);
+							prisma(7, 12, 7, 0);
+							glPushMatrix();
+								/*managing director office*/
+								glTranslatef(16.5, 0, 5.5);
+								glColor3f(1,0,1);
+								prisma(26, 12, 18, 0);
+							glPopMatrix();
+							/*bath*/
+							glTranslatef(0, 0, 9);
+							glColor3f(0, 1, 1);
+							prisma(7, 12, 11, 0);
+							/*ventana bath izquierda*/
+							glPushMatrix();
+								glTranslatef(-3.5, 0, 2);
+								glColor3f(0.62, 0.92, 0.99);
+								prisma(0.1, 6, 4, 0);
+							glPopMatrix();
+						glPopMatrix();
+
+						/*supporting staff*/
+						glTranslatef(11.5, 0, 0);
+						glColor3f(0, 0, 1);
+						prisma(11, 12, 20, 0);
+					glPopMatrix();
+				glPopMatrix();				
+			glPopMatrix();			
 		glPopMatrix();
 		/***************************************
 		*			Cuarto Piso
 		***************************************/
-		glPushMatrix(); 
-			glTranslatef(0, 42, 0);
-			glColor3f(0,1,1);
-			prisma(6,7,10,1);
-			glTranslatef(0, 0, 18);
-			glColor3f(1, 0, 0);
-			prisma(6, 7, 8, 1);
-			glTranslatef(26, 0,-10);
-			glColor3f(0, 0, 1);
-			prisma(20, 7, 18, 0);			
-			glTranslatef(32.5, 0, 0);
-			glColor3f(1, 1, 0);
-			prisma(12.5, 7, 18, 0);
-			glTranslatef(25, 0, 0);
-			glColor3f(0, 1, 1);			
-			prisma(12.5, 7, 18, 0);
-			glTranslatef(32.5, 0, 0);
-			glColor3f(1, 0, 1);
-			prisma(20, 7, 18, 0);
-			glTranslatef(26, 0, -8);
-			glColor3f(0, 1, 0);
-			prisma(6, 7, 10, 1);
-			glTranslatef(0, 0, 18);
-			glColor3f(1, 0, 0);
-			prisma(6, 7, 8, 1);
+		glPushMatrix();
+			glTranslatef(0, 48, 0);
+						/*Baño izquierda*/
+			glColor3f(0,1,0);
+			prisma(6, 12,10,1);
+			/*Ventana baño*/
 			glPushMatrix();
-				glTranslatef(-12, 0, 28);
+				glTranslatef(0,1,-5);
+				glColor3f(0.62,0.92,0.99);
+				prisma(3,6,0.1,0);
+			glPopMatrix();
+			/*DRS izquierda*/
+			glTranslatef(0, 0, 9);
+			glColor3f(1, 0, 0);
+			prisma(6, 12, 8, 1);
+			/*Oficina director izquierda*/
+			glTranslatef(13, 0,-5);
+			glColor3f(0, 0, 1);
+			prisma(20, 12, 18, 0);						
+			/*Ventana director izquierda*/
+			glPushMatrix();
+				glTranslatef(-4,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(6,6,0.1,0);
+			glPopMatrix();			
+			/*Supporting staff office izquierda*/
+			glTranslatef(16.25, 0, 0);
+			glColor3f(1, 1, 0);
+			prisma(12.5, 12, 18, 0);
+			/*Ventana supportin izquierda*/
+			glPushMatrix();
+				glTranslatef(1,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(7,6,0.1,0);
+			glPopMatrix();
+			/*Supporting staff office derecha*/
+			glTranslatef(12.5, 0, 0);
+			glColor3f(0, 1, 1);			
+			prisma(12.5, 12, 18, 0);
+			/*Ventana supportin derecha*/
+			glPushMatrix();
+				glTranslatef(-1,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(7,6,0.1,0);
+			glPopMatrix();
+			/*Director office derecha*/
+			glTranslatef(16.25, 0, 0);
+			glColor3f(1, 0, 1);
+			prisma(20, 12, 18, 0);
+			/*Ventana director derecha*/
+			glPushMatrix();
+				glTranslatef(4,1,-9);
+				glColor3f(0.62,0.92,0.99);
+				prisma(6,6,0.1,0);
+			glPopMatrix();			
+			/*Bath derecha*/
+			glTranslatef(13, 0, -4);
+			glColor3f(0, 1, 0);
+			prisma(6, 12, 10, 1);
+			/*Ventana baño*/
+			glPushMatrix();
+				glTranslatef(0,1,-5);
+				glColor3f(0.62,0.92,0.99);
+				prisma(3,6,0.1,0);
+			glPopMatrix();
+			/*DRS derecha*/
+			glTranslatef(0, 0, 9);
+			glColor3f(1, 0, 0);
+			prisma(6, 12, 8, 1);
+			glPushMatrix();
+				/*Director office derecha*/
+				glTranslatef(-6, 0, 14);
 				glColor3f(0, 1, 0);
-				prisma(18, 7, 20, 1);	
-				glTranslatef(-118, 0, 0);
+				prisma(18, 12, 20, 1);	
+				/*Director office izquierda*/
+				glTranslatef(-59, 0, 0);
 				glColor3f(0, 1, 0);
-				prisma(18, 7, 20, 1);
+				prisma(18, 12, 20, 1);
+				/*	Ventana oficiona director izquierda*/
 				glPushMatrix();
-				glTranslatef(-12.5, 0, 31);
-				glColor3f(1, 0, 0);
-				prisma(5.5, 7, 11, 0);
-				glTranslatef(18, 0, 0);
-				glColor3f(0, 0, 1);
-				prisma(12.5, 7, 11, 0);
-				glTranslatef(107, 0, 0);
-				glColor3f(0, 0, 1);
-				prisma(12.5, 7, 11, 0);
-				glTranslatef(18, 0, 0);
-				glColor3f(1, 0, 0);
-				prisma(5.5, 7, 11, 0);
-				glPopMatrix();
+					glTranslatef(-9,0,0);
+					glColor3f(0.62,0.92,0.99);
+					prisma(0.1,6,8,0);
+				glPopMatrix();		
 				glPushMatrix();
-					glTranslatef(-14,0,46);
-					glColor3f(1 ,0 ,1 );
-					prisma(4, 7, 4, 0);
-					glPushMatrix();
-						glTranslatef(10, 0, 4);
-						glColor3f(1, 0, 0);
-						prisma(6, 7, 8, 0);
-						glTranslatef(126, 0, 0);
-						glColor3f(1, 0, 0);
-						prisma(6, 7, 8, 0);
-						glTranslatef(10, 0, -4);
-						glColor3f(1, 0, 1);
-						prisma(4, 7, 4, 0);
-						glTranslatef(0, 0, 8);
-						glColor3f(0, 1, 1);
-						prisma(4, 7, 4, 0);
-					glPopMatrix();
-					glTranslatef(0, 0, 8);
-					glColor3f(0, 1, 1);
-					prisma(4, 7, 4, 0);
-				glPopMatrix();
-				glPushMatrix();
-					glTranslatef(-13,0,61);
-					glColor3f(1, 1, 1);
-					prisma(5, 7, 3,0);
-					glPushMatrix();
-						glTranslatef(10, 0, 15);
-						glColor3f(1, 1, 0);
-						prisma(5, 7, 18, 0);
-						glTranslatef(124, 0, 0);
-						glColor3f(1, 1, 0);
-						prisma(5, 7, 18, 0);
-						glTranslatef(10, 0, -15);
-						glColor3f(1, 1, 1);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(0, 1, 0);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(1, 0, 0);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(0, 0, 1);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(1, 1, 0);
-						prisma(5, 7, 3, 0);
-						glTranslatef(0, 0, 6);
-						glColor3f(0, 1, 1);
-						prisma(5, 7, 3, 0);
-					glPopMatrix();
-					glTranslatef(0, 0, 6);
-					glColor3f(0, 1, 0);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
+					/*bath izquierdo*/
+					glTranslatef(-6.25, 0, 15.5);
 					glColor3f(1, 0, 0);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
+					prisma(5.5, 12, 11, 0);
+					/*staff office izquierdo*/
+					glTranslatef(9, 0, 0);
 					glColor3f(0, 0, 1);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
-					glColor3f(1, 1, 0);
-					prisma(5, 7, 3, 0);
-					glTranslatef(0, 0, 6);
+					prisma(12.5, 12, 11, 0);
+					/*staff office derecho*/
+					glTranslatef(53.5, 0, 0);
+					glColor3f(0, 0, 1);
+					prisma(12.5, 12, 11, 0);
+					/*bath derecho*/
+					glTranslatef(9, 0, 0);
+					glColor3f(1, 0, 0);
+					prisma(5.5, 12, 11, 0);
+				glPopMatrix();
+				glPushMatrix();
+					/*wc izquierdo*/
+					glTranslatef(-7,0,23);
+					glColor3f(1 ,0 ,1 );
+					prisma(4, 12, 4, 0);
+					glPushMatrix();
+						/*f.lavortry izquierdo*/
+						glTranslatef(5, 0, 2);
+						glColor3f(1, 0, 0);
+						prisma(6, 12, 8, 0);
+						/*f.lavortry derecha*/
+						glTranslatef(63, 0, 0);
+						glColor3f(1, 0, 0);
+						prisma(6, 12, 8, 0);
+						/*wc derecha*/
+						glTranslatef(5, 0, -2);
+						glColor3f(1, 0, 1);
+						prisma(4, 12, 4, 0);
+						/*wc derecha*/
+						glTranslatef(0, 0, 4);
+						glColor3f(0, 1, 1);
+						prisma(4, 12, 4, 0);
+					glPopMatrix();
+					/*wc izquierda*/
+					glTranslatef(0, 0, 4);
 					glColor3f(0, 1, 1);
-					prisma(5, 7, 3, 0);
+					prisma(4, 12, 4, 0);
+				glPopMatrix();
+				glPushMatrix();
+					/*wc izquierdo*/
+					glTranslatef(-6.5,0,30.5);
+					glColor3f(1, 1, 1);
+					prisma(5, 12, 3,0);
+					glPushMatrix();
+						/*m.lavortry izquierdo*/
+						glTranslatef(5, 0, 7.5);
+						glColor3f(1, 1, 0);
+						prisma(5, 12, 18, 0);
+						/*m.lavortry derecho*/
+						glTranslatef(62, 0, 0);
+						glColor3f(1, 1, 0);
+						prisma(5, 12, 18, 0);
+						/*wc derecho*/
+						glTranslatef(5, 0, -7.5);
+						glColor3f(1, 1, 1);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(0, 1, 0);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(1, 0, 0);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(0, 0, 1);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(1, 1, 0);
+						prisma(5, 12, 3, 0);
+						/*wc derecho*/
+						glTranslatef(0, 0, 3);
+						glColor3f(0, 1, 1);
+						prisma(5, 12, 3, 0);
+					glPopMatrix();
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(0, 1, 0);
+					prisma(5, 12, 3, 0);
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(1, 0, 0);
+					prisma(5, 12, 3, 0);
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(0, 0, 1);
+					prisma(5, 12, 3, 0);
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(1, 1, 0);
+					prisma(5, 12, 3, 0);
+					/*wc izquierdo*/
+					glTranslatef(0, 0, 3);
+					glColor3f(0, 1, 1);
+					prisma(5, 12, 3, 0);
 				glPopMatrix();			
 				glPushMatrix();
-					glTranslatef(-8, 0, 119);
+					/*dining hall*/
+					glTranslatef(-4, 0, 59.5);
 					glColor3f(1, 0, 1);
-					prisma(10, 7, 25, 0);
-					glTranslatef(134, 0, 0);
+					prisma(10, 12, 25, 0);
+					/*ventana dining hall*/
+					glPushMatrix();
+						glTranslatef(-5, 0, -2.25);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7.5, 0);
+					glPopMatrix();
+					/*archive*/
+					glTranslatef(67, 0, -7.5);
 					glColor3f(1, 0, 1);
-					prisma(10, 7, 25, 0);
+					prisma(10, 12, 10, 0);
+					/*computer net room*/
+					glTranslatef(0, 0, 10);
+					glColor3f(1, 0, 0);
+					prisma(10, 12, 10, 0);
+					/*telephone exchange*/
+					glTranslatef(0, 0, 10);
+					glColor3f(1, 1, 0);
+					prisma(10, 12, 10, 0);
+					/*electric room*/
+					glTranslatef(0, 0, 11);
+					glColor3f(1, 1, 1);
+					prisma(10, 12, 12, 0);
 				glPopMatrix();
 				glPushMatrix();
-					glTranslatef(-8,0,151);
+					/*kitchen*/
+					glTranslatef(-4,0,80.5);
 					glColor3f(1, 1, 1);
-					prisma(10, 7, 7, 0);
+					prisma(10, 12, 17, 0);
+					/*kitchen ventana*/
 					glPushMatrix();
-						glColor3f(1, 0, 0);
-						glTranslatef(19, 0, -43);
-						prisma(9, 7, 50, 0);
-						glColor3f(1, 0, 0);
-						glTranslatef(96, 0, 0);
-						prisma(9, 7, 50, 0);
+						glTranslatef(-5, 0, -3.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7, 0);
 					glPopMatrix();
-					glTranslatef(35, 0, -2);
-					glColor3f(0, 1, 0);
-					prisma(7, 7, 9, 0);
-					glTranslatef(64, 0, 0);
-					glColor3f(0, 1, 0);
-					prisma(7, 7, 9, 0);
-					glTranslatef(35, 0, 2);
-					glColor3f(1, 1, 1);
-					prisma(10, 7, 7, 0);
-				glPopMatrix();
+					glPushMatrix();
+						/*corridor izquierdo*/
+						glColor3f(1, 0, 0);
+						glTranslatef(9.5, 0, -22);
+						prisma(9, 12, 59, 0);
+						/*corridor derecho*/
+						glColor3f(1, 0, 0);
+						glTranslatef(48, 0, 0);
+						prisma(9, 12, 59, 0);
+					glPopMatrix();					
+				glPopMatrix();				
 			glPopMatrix();
+			glPushMatrix();
+				/*Corridor central*/
+				glTranslatef(-36,-3, 110.5);
+				glColor3f(0, 1, 0);
+				prisma(69, 12, 15, 0);
+				/*Ventanas corridor central*/
+				glPushMatrix();
+					/*Ventana izquierda*/
+					glTranslatef(-34.5, 0, 3.75);
+					glColor3f(0.62, 0.92, 0.99);
+					prisma(0.1, 6, 7.5, 0);
+					/*Ventana derecha*/
+					glTranslatef(34.5, 0, -2.25);
+					glColor3f(0.62, 0.92, 0.99);
+					prisma(0.1, 6, 7, 0);
+				glPopMatrix();
+				glPushMatrix();
+					/*bath izquierdo*/
+					glTranslatef(-32,0,12.5);
+					glColor3f(1,1,0);
+					prisma(5,12,10,0);
+					/*Ventana izquierda*/
+					glPushMatrix();
+						glTranslatef(-2.5, 0, -1.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 3, 0);
+					glPopMatrix();
+						glPushMatrix();
+							/*suporting izquierdo*/
+							glTranslatef(8,0,0);
+							glColor3f(1,0,1);
+							prisma(12,12,10,0);
+							/*suporting derecho*/
+							glTranslatef(47.5, 0, 0);
+							glColor3f(1, 0, 1);
+							prisma(12, 12, 10, 0);
+						glPopMatrix();
+					/*bath derecho*/
+					glTranslatef(64, 0, 0);
+					glColor3f(1, 1, 0);
+					prisma(5, 12, 10, 0);
+				glPopMatrix();
+				/*falta agregar a la oficina del direct un cuadrito D:*/
+				glPushMatrix();
+					glTranslatef(-23,0,24.5);
+					glColor3f(0, 1, 1);
+					prisma(23, 12, 14, 0);
+					/*Ventana izquierda*/
+					glPushMatrix();	
+						/*Primer ventana*/
+						glTranslatef(-11.5, 0, -2);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 4, 0);
+						/*Segunda ventana*/
+						glTranslatef(0, 0, 7);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 4, 0);
+					glPopMatrix();
+					glPushMatrix();
+						/*rest room*/
+						glTranslatef(-5.5, 0, 17);
+						glColor3f(1, 0, 0);
+						prisma(12, 12, 20, 0);
+						/*ventna rest room izquierda*/
+						glPushMatrix();
+							/*Primer ventana*/
+							glTranslatef(-6, 0, -6);
+							glColor3f(0.62, 0.92, 0.99);
+							prisma(0.1, 6, 4, 0);						
+							/*Segunda ventana*/
+							glTranslatef(0, 0, 6);
+							glColor3f(0.62, 0.92, 0.99);
+							prisma(0.1, 6, 4, 0);
+							/*Tercer ventana*/
+							glTranslatef(0, 0, 6);
+							glColor3f(0.62, 0.92, 0.99);
+							prisma(0.1, 6, 4, 0);
+						glPopMatrix();
+						glPushMatrix();
+							/*drs*/
+							glTranslatef(-2.5, 0, 13.5);
+							glColor3f(1, 1, 1);
+							prisma(7, 12, 7, 0);
+							glPushMatrix();
+								/*managing director office*/
+								glTranslatef(16.5, 0, 5.5);
+								glColor3f(1,0,1);
+								prisma(26, 12, 18, 0);
+							glPopMatrix();
+							/*bath*/
+							glTranslatef(0, 0, 9);
+							glColor3f(0, 1, 1);
+							prisma(7, 12, 11, 0);
+							/*ventana bath izquierda*/
+							glPushMatrix();
+								glTranslatef(-3.5, 0, 2);
+								glColor3f(0.62, 0.92, 0.99);
+								prisma(0.1, 6, 4, 0);
+							glPopMatrix();
+						glPopMatrix();
+
+						/*supporting staff*/
+						glTranslatef(11.5, 0, 0);
+						glColor3f(0, 0, 1);
+						prisma(11, 12, 20, 0);
+					glPopMatrix();
+				glPopMatrix();				
+			glPopMatrix();			
 		glPopMatrix();
+		/***************************************
+		*				Techo
+		***************************************/
+		glPushMatrix();			
+			glTranslatef(-1.5, 67.5, 53.5);
+			glColor3f(0,0,0.54);
+			prisma(3, 3,117,1);
+			glPushMatrix();
+				glTranslatef(38,-1.45,-30);
+				glColor3f(0,1,1);
+				prisma(75, 0.1,57,1);
+				glTranslatef(-28.5, 0, 58.5);
+				glColor3f(0, 1, 1);
+				prisma(16, 0.1, 60, 1);
+				glTranslatef(55, 0, 0);
+				glColor3f(0, 1, 1);
+				prisma(16, 0.1, 60, 1);
+			glPopMatrix();
+			glTranslatef(74, 0, 0);
+			glColor3f(0, 0, 0.54);
+			prisma(3, 3, 117, 0);
+			glTranslatef(-37, 0, -57);
+			glColor3f(0, 0, 0.54);
+			prisma(76, 3, 3, 0);
+			glTranslatef(-33.5, -3, 154);
+			glColor3f(0, 0, 0.54);
+			prisma(3, 3, 76, 0);
+		glPopMatrix();
+		/***********************************
+		*			Quinto Piso
+		***********************************/
+		glPushMatrix();
+			glTranslatef(35.5, 60, 19.5);
+			glColor3f(1, 1, 1);
+			prisma(77, 12, 49, 0);
+			glPushMatrix();
+				/*wc izquierdo*/
+				glTranslatef(-36.5,0,26.5);
+				glColor3f(1 ,0 ,1 );
+				prisma(4, 12, 4, 0);
+				glPushMatrix();
+					/*f.lavortry izquierdo*/
+					glTranslatef(5, 0, 2);
+					glColor3f(1, 0, 0);
+					prisma(6, 12, 8, 0);
+					/*f.lavortry derecha*/
+					glTranslatef(63, 0, 0);
+					glColor3f(1, 0, 0);
+					prisma(6, 12, 8, 0);
+					/*wc derecha*/
+					glTranslatef(5, 0, -2);
+					glColor3f(1, 0, 1);
+					prisma(4, 12, 4, 0);
+					/*wc derecha*/
+					glTranslatef(0, 0, 4);
+					glColor3f(0, 1, 1);
+					prisma(4, 12, 4, 0);
+				glPopMatrix();
+				/*wc izquierda*/
+				glTranslatef(0, 0, 4);
+				glColor3f(0, 1, 1);
+				prisma(4, 12, 4, 0);
+			glPopMatrix();
+			glPushMatrix();
+				/*wc izquierdo*/
+				glTranslatef(-36,0,34);
+				glColor3f(1, 1, 1);
+				prisma(5, 12, 3,0);
+				glPushMatrix();
+					/*m.lavortry izquierdo*/
+					glTranslatef(5, 0, 7.5);
+					glColor3f(1, 1, 0);
+					prisma(5, 12, 18, 0);
+					/*m.lavortry derecho*/
+					glTranslatef(62, 0, 0);
+					glColor3f(1, 1, 0);
+					prisma(5, 12, 18, 0);
+					/*wc derecho*/
+					glTranslatef(5, 0, -7.5);
+					glColor3f(1, 1, 1);
+					prisma(5, 12, 3, 0);
+					/*wc derecho*/
+					glTranslatef(0, 0, 3);
+					glColor3f(0, 1, 0);
+					prisma(5, 12, 3, 0);
+					/*wc derecho*/
+					glTranslatef(0, 0, 3);
+					glColor3f(1, 0, 0);
+					prisma(5, 12, 3, 0);
+					/*wc derecho*/
+					glTranslatef(0, 0, 3);
+					glColor3f(0, 0, 1);
+					prisma(5, 12, 3, 0);
+					/*wc derecho*/
+					glTranslatef(0, 0, 3);
+					glColor3f(1, 1, 0);
+					prisma(5, 12, 3, 0);
+					/*wc derecho*/
+					glTranslatef(0, 0, 3);
+					glColor3f(0, 1, 1);
+					prisma(5, 12, 3, 0);
+				glPopMatrix();
+				/*wc izquierdo*/
+				glTranslatef(0, 0, 3);
+				glColor3f(0, 1, 0);
+				prisma(5, 12, 3, 0);
+				/*wc izquierdo*/
+				glTranslatef(0, 0, 3);
+				glColor3f(1, 0, 0);
+				prisma(5, 12, 3, 0);
+				/*wc izquierdo*/
+				glTranslatef(0, 0, 3);
+				glColor3f(0, 0, 1);
+				prisma(5, 12, 3, 0);
+				/*wc izquierdo*/
+				glTranslatef(0, 0, 3);
+				glColor3f(1, 1, 0);
+				prisma(5, 12, 3, 0);
+				/*wc izquierdo*/
+				glTranslatef(0, 0, 3);
+				glColor3f(0, 1, 1);
+				prisma(5, 12, 3, 0);
+			glPopMatrix();			
+			glPushMatrix();
+				/*dining hall*/
+				glTranslatef(-33.5, 0, 63);
+				glColor3f(1, 0, 1);
+				prisma(10, 12, 25, 0);
+				/*ventana dining hall*/
+				glPushMatrix();
+					glTranslatef(-5, 0, -2.25);
+					glColor3f(0.62, 0.92, 0.99);
+					prisma(0.1, 6, 7.5, 0);
+				glPopMatrix();
+				/*archive*/
+				glTranslatef(67, 0, -7.5);
+				glColor3f(1, 0, 1);
+				prisma(10, 12, 10, 0);
+				/*computer net room*/
+				glTranslatef(0, 0, 10);
+				glColor3f(1, 0, 0);
+				prisma(10, 12, 10, 0);
+				/*telephone exchange*/
+				glTranslatef(0, 0, 10);
+				glColor3f(1, 1, 0);
+				prisma(10, 12, 10, 0);
+				/*electric room*/
+				glTranslatef(0, 0, 11);
+				glColor3f(1, 1, 1);
+				prisma(10, 12, 12, 0);
+			glPopMatrix();
+			glPushMatrix();
+				/*kitchen*/
+				glTranslatef(-33.5,0,84);
+				glColor3f(1, 1, 1);
+				prisma(10, 12, 17, 0);
+				/*kitchen ventana*/
+					glPushMatrix();
+						glTranslatef(-5, 0, -3.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7, 0);
+					glPopMatrix();
+				glPushMatrix();
+				/*corridor izquierdo*/
+					glColor3f(1, 0, 0);
+					glTranslatef(9.5, 0, -22);
+					prisma(9, 12, 59, 0);
+					/*corridor derecho*/
+					glColor3f(1, 0, 0);
+					glTranslatef(48, 0, 0);
+					prisma(9, 12, 59, 0);
+				glPopMatrix();					
+				glPopMatrix();				
+				glPushMatrix();
+					/*Corridor central*/
+					glTranslatef(-0.5, -3, 100);
+					glColor3f(0, 1, 0);
+					prisma(69, 12, 15, 0);					
+					/*Ventanas corridor central*/
+					glPushMatrix();
+						/*Ventana izquierda*/
+						glTranslatef(-34.5, 0, 3.75);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7.5, 0);
+						/*Ventana derecha*/
+						glTranslatef(34.5, 0, -2.25);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7, 0);
+					glPopMatrix();
+					glPushMatrix();
+						/*depports managers office izquierda*/
+						glTranslatef(-23,0,13.5);
+						glColor3f(1,1,1);
+						prisma(23, 12, 12, 0);						
+						/*depports managers office derecha*/
+						glTranslatef(46.5, 0, 0);
+						glColor3f(1, 1, 1);
+						prisma(23, 12, 12, 0);
+					glPopMatrix();
+					glPushMatrix();
+						glTranslatef(-23, 0, 25.5);
+						glColor3f(1, 1, 0);
+						prisma(23,12,12,0);
+						glPushMatrix();
+							glTranslatef(0, 0, 12);
+							glColor3f(1, 0, 1);
+							prisma(23, 12, 12, 0);
+							glTranslatef(0, 0, 12.5);
+							glColor3f(0, 0, 1);
+							prisma(23, 12, 13, 0);
+							glTranslatef(0, 0, 13);
+							glColor3f(1, 1, 0);
+							prisma(23, 12, 13, 0);
+						glPopMatrix();
+						glTranslatef(46.5, 0, 0);
+						glColor3f(1, 1, 0);
+						prisma(23, 12, 12, 0);
+					glPopMatrix();
+				glPopMatrix();
+			glPopMatrix();			
+		glPopMatrix();		
   glPopMatrix();
   glutSwapBuffers ( );
   // Swap The Buffers
@@ -876,7 +2176,7 @@ void reshape ( int width , int height )   // Creamos funcion Reshape
 	// Tipo de Vista
 	//glOrtho(-5,5,-5,5,0.2,20);	
 	//glFrustum(-0.1, 0.1, -0.1, 0.1, 0.1, 170.0);
-	glFrustum (-0.1, 0.1,-0.1, 0.1, 0.1, 700);
+	glFrustum (-0.1, 0.1,-0.1, 0.1, 0.1, 800);
 
 	glMatrixMode(GL_MODELVIEW);							// Seleccionamos Modelview Matrix
 	//glLoadIdentity();									
@@ -959,6 +2259,7 @@ int main ( int argc, char** argv )   // Main Function
 
   return 0;
 }
+
 
 
 
