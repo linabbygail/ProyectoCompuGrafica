@@ -1,11 +1,9 @@
 //Semestre 2016 - 1
 //************************************************************//
 //************************************************************//
-//************** Alumno (s): *********************************//
-//*************											******//
-//*************											******//
 //************************************************************//
 #include "Main.h"
+#include "texture.h"
 
 float transZ = 0.0f;
 float transX = 0.0f;
@@ -14,6 +12,20 @@ float angleX = 0.0f;
 float angleY = 0.0f;
 int screenW = 0.0;
 int screenH = 0.0;
+
+/***************
+* Texturas
+****************/
+//Textura de fuera
+CTexture fuera;
+//Textura pared
+CTexture pared;
+//Textura piso
+CTexture piso;
+//Textura ventana
+CTexture ventana;
+//Textura puerta
+CTexture puerta;
 
 
 GLfloat Position[]= { 0.0f, 3.0f, 0.0f, 1.0f };			// Light Position
@@ -37,6 +49,26 @@ void InitGL ( void )     // Inicializamos parametros
 	glDepthFunc(GL_LEQUAL);								// Tipo de Depth Testing a realizar
 	glEnable ( GL_COLOR_MATERIAL );
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+
+	glEnable(GL_TEXTURE_2D);
+	/*****************************
+	* DefiniciOn de texturas
+	*****************************/
+	fuera.LoadTGA("fuera.tga");
+	fuera.BuildGLTexture();
+	fuera.ReleaseImage();
+
+	pared.LoadTGA("");
+	pared.BuildGLTexture();
+	pared.ReleaseImage();
+
+	piso.LoadTGA("");
+	piso.BuildGLTexture();
+	piso.ReleaseImage();
+
+	ventana.LoadTGA("");
+	ventana.BuildGLTexture();
+	ventana.ReleaseImage();
 }
 
 void prisma(float largo, float altura, float profundidad, GLuint text)
@@ -52,52 +84,58 @@ void prisma(float largo, float altura, float profundidad, GLuint text)
 		{ -largo*0.5,altura*0.5, profundidad*0.5 },    //Coordenadas Vértice 7 V7
 	};
 
+	glBindTexture(GL_TEXTURE_2D, text);
 	glBegin(GL_POLYGON);	//Front
 		glNormal3f(0.0f, 0.0f, 1.0f);
-		glVertex3fv(vertice[0]);
-		glVertex3fv(vertice[4]);
-		glVertex3fv(vertice[7]);
-		glVertex3fv(vertice[1]);
+		glTexCoord2f(0, 0);	glVertex3fv(vertice[0]);
+		glTexCoord2f(0, 1); glVertex3fv(vertice[4]);
+		glTexCoord2f(1, 1); glVertex3fv(vertice[7]);
+		glTexCoord2f(1, 0); glVertex3fv(vertice[1]);
 	glEnd();
 
+	glBindTexture(GL_TEXTURE_2D, text);
 	glBegin(GL_POLYGON);	//Right
 		glNormal3f(1.0f, 0.0f, 0.0f);
-		glVertex3fv(vertice[0]);
-		glVertex3fv(vertice[3]);
-		glVertex3fv(vertice[5]);
-		glVertex3fv(vertice[4]);
+		glTexCoord2f(0, 0); glVertex3fv(vertice[0]);
+		glTexCoord2f(1, 0); glVertex3fv(vertice[3]);
+		glTexCoord2f(1, 1); glVertex3fv(vertice[5]);
+		glTexCoord2f(0, 1); glVertex3fv(vertice[4]);
 	glEnd();
 
+	glBindTexture(GL_TEXTURE_2D, text);
 	glBegin(GL_POLYGON);	//Back
 		glNormal3f(0.0f, 0.0f, -1.0f);
-		glVertex3fv(vertice[6]);
-		glVertex3fv(vertice[5]);
-		glVertex3fv(vertice[3]);
-		glVertex3fv(vertice[2]);
+		glTexCoord2f(0, 1); glVertex3fv(vertice[6]);
+		glTexCoord2f(1, 1); glVertex3fv(vertice[5]);
+		glTexCoord2f(1, 0); glVertex3fv(vertice[3]);
+		glTexCoord2f(0, 0); glVertex3fv(vertice[2]);
 	glEnd();
 
+	glBindTexture(GL_TEXTURE_2D, text);
 	glBegin(GL_POLYGON);  //Left
-		glNormal3f(-1.0f, 0.0f, 0.0f);
-		glVertex3fv(vertice[1]);
-		glVertex3fv(vertice[7]);
-		glVertex3fv(vertice[6]);
-		glVertex3fv(vertice[2]);
+		glNormal3f(1.0f, 0.0f, 0.0f);
+		glTexCoord2f(1, 0); glVertex3fv(vertice[1]);
+		glTexCoord2f(1, 1); glVertex3fv(vertice[7]);
+		glTexCoord2f(0, 1); glVertex3fv(vertice[6]);
+		glTexCoord2f(0, 0); glVertex3fv(vertice[2]);
 	glEnd();
 
+	glBindTexture(GL_TEXTURE_2D, text);
 	glBegin(GL_POLYGON);  //Bottom
-		glNormal3f(0.0f, -1.0f, 0.0f);
-		glVertex3fv(vertice[0]);
-		glVertex3fv(vertice[1]);
-		glVertex3fv(vertice[2]);
-		glVertex3fv(vertice[3]);
+		glNormal3f(0.0f, 1.0f, 0.0f);
+		glTexCoord2f(0, 0); glVertex3fv(vertice[0]);
+		glTexCoord2f(1, 0); glVertex3fv(vertice[1]);
+		glTexCoord2f(1, 1); glVertex3fv(vertice[2]);
+		glTexCoord2f(1, 1); glVertex3fv(vertice[3]);
 	glEnd();
 
+	glBindTexture(GL_TEXTURE_2D, text);
 	glBegin(GL_POLYGON);  //Top
 		glNormal3f(0.0f, 1.0f, 0.0f);
-		glVertex3fv(vertice[4]);
-		glVertex3fv(vertice[5]);
-		glVertex3fv(vertice[6]);
-		glVertex3fv(vertice[7]);
+		glTexCoord2f(0, 0); glVertex3fv(vertice[4]);
+		glTexCoord2f(1, 0); glVertex3fv(vertice[5]);		
+		glTexCoord2f(1, 1); glVertex3fv(vertice[6]);
+		glTexCoord2f(0, 1); glVertex3fv(vertice[7]);
 	glEnd();
 }
 
@@ -111,6 +149,12 @@ void display ( void )   // Creamos la funcion donde se dibuja
 		glTranslatef(transX, 0.0f, transZ);
 		glRotatef(angleY, 0.0, 1.0, 0.0);
 		glRotatef(angleX, 1.0, 0.0, 0.0);		
+
+		glPushMatrix();
+			glColor3f(1, 1, 1);
+			glTranslatef(200, 0, 0);
+			prisma(101, 100, 100, fuera.GLindex);
+		glPopMatrix();
 		/***************************************
 		*			Planta Baja
 		***************************************/
@@ -122,7 +166,7 @@ void display ( void )   // Creamos la funcion donde se dibuja
 			glPushMatrix();
 				glTranslatef(0,1,-5);
 				glColor3f(0.62,0.92,0.99);
-				prisma(3,6,0.1,0);
+				prisma(3,6,0.1,0);				
 			glPopMatrix();
 			/*DRS izquierda*/
 			glTranslatef(0, 0, 9);
@@ -136,7 +180,7 @@ void display ( void )   // Creamos la funcion donde se dibuja
 			glPushMatrix();
 				glTranslatef(-4,1,-9);
 				glColor3f(0.62,0.92,0.99);
-				prisma(6,6,0.1,0);
+				prisma(6,6,0.1,0);				
 			glPopMatrix();			
 			/*Supporting staff office izquierda*/
 			glTranslatef(16.25, 0, 0);
@@ -166,7 +210,7 @@ void display ( void )   // Creamos la funcion donde se dibuja
 			glPushMatrix();
 				glTranslatef(4,1,-9);
 				glColor3f(0.62,0.92,0.99);
-				prisma(6,6,0.1,0);
+				prisma(6,6,0.1,0);				
 			glPopMatrix();			
 			/*Bath derecha*/
 			glTranslatef(13, 0, -4);
@@ -196,6 +240,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					glTranslatef(-9,0,0);
 					glColor3f(0.62,0.92,0.99);
 					prisma(0.1,6,8,0);
+					/*	Ventana oficiona director derecha*/
+					glTranslatef(77, 0, 0);
+					glColor3f(0.62, 0.92, 0.99);
+					prisma(0.1, 6, 8, 0);
 				glPopMatrix();		
 				glPushMatrix();
 					/*bath izquierdo*/
@@ -207,6 +255,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 						glTranslatef(-2.75,0,1);
 						glColor3f(0.62,0.92,0.99);
 						prisma(0.1,6,4,0);
+						/*Ventana bath derecho*/
+						glTranslatef(77, 0, 0);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 4, 0);
 					glPopMatrix();			
 					/*staff office izquierdo*/
 					glTranslatef(9, 0, 0);
@@ -229,6 +281,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					/*Ventana bath izquierdo*/
 					glPushMatrix();
 						glTranslatef(-2, 0, -0.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 3, 0);
+						/*Ventana bath derecho*/
+						glTranslatef(77, 0, 0);
 						glColor3f(0.62, 0.92, 0.99);
 						prisma(0.1, 6, 3, 0);
 					glPopMatrix();
@@ -307,6 +363,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 						glTranslatef(-2.5, 0, 2.25);
 						glColor3f(0.62, 0.92, 0.99);
 						prisma(0.1, 6, 7.5, 0);
+						/*Ventana lado derecho*/
+						glTranslatef(77, 0, 0);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7.5, 0);
 					glPopMatrix();
 					/*wc izquierdo*/
 					glTranslatef(0, 0, 3);
@@ -329,6 +389,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					/*ventana dining hall*/
 					glPushMatrix();
 						glTranslatef(-5, 0, -2.25);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7.5, 0);
+						/*Ventana derecha*/
+						glTranslatef(77, 0, 0);
 						glColor3f(0.62, 0.92, 0.99);
 						prisma(0.1, 6, 7.5, 0);
 					glPopMatrix();
@@ -356,7 +420,11 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					prisma(10, 12, 17, 0);
 					/*kitchen ventana*/
 					glPushMatrix();
-						glTranslatef(-5, 0, -3.5);
+						glTranslatef(-5, 0, -3.5); 
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7, 0);
+						/*Ventana derecha*/
+						glTranslatef(77, 0, 0);
 						glColor3f(0.62, 0.92, 0.99);
 						prisma(0.1, 6, 7, 0);
 					glPopMatrix();
@@ -413,6 +481,23 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					glTranslatef(64, 0, 0);
 					glColor3f(1, 1, 0);
 					prisma(5, 12, 10, 0);
+					glPushMatrix();
+						glTranslatef(-8.5,0,12);
+						glColor3f(1, 1, 1);
+						prisma(22, 12, 14, 0);
+						/*Columna*/
+						glTranslatef(-3, 0, 7.75);
+						glColor3f(0, 0, 1);
+						prisma(1.5, 12, 1.5, 0);
+						/**/
+						glTranslatef(-0.75, 0, 5.75);
+						glColor3f(1, 0, 0);
+						prisma(0.1, 12, 10, 0);						
+						/*Ventana*/
+						glTranslatef(0, 1, 0);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.12, 6, 10, 0);						
+					glPopMatrix();
 				glPopMatrix();
 				/*falta agregar a la oficina del direct un cuadrito D:*/
 				glPushMatrix();
@@ -460,6 +545,35 @@ void display ( void )   // Creamos la funcion donde se dibuja
 								glTranslatef(16.5, 0, 5.5);
 								glColor3f(1,0,1);
 								prisma(26, 12, 18, 0);
+								/*Columna*/
+								glTranslatef(13.75, 0, -8.25);
+								glColor3f(0, 1, 1);
+								prisma(1.5, 12, 1.5, 0);
+								/**/
+								glTranslatef(5.75, 0, -0.75);
+								glColor3f(1, 0, 0);
+								prisma(10, 12, 0.1, 0);								
+								/*Ventana*/
+								glTranslatef(0, 1, 0);
+								glColor3f(0.62, 0.92, 0.99);
+								prisma(10, 6, 0.12, 0);
+								/*Central, puerta*/								
+								//glRotatef(45, 0, 1, 0);
+								glTranslatef(9.9, -1, -4.2);								
+								glRotatef(41, 0, 1, 0);
+								glColor3f(1, 1, 0);							
+								prisma(13, 12, 0.1, 0);
+								/*Puerta*/
+								glTranslatef(0, -1, 0);
+								glColor3f(1,1,1);
+								prisma(7,10,0.12,0);
+								/*Ventana*/
+								glTranslatef(-5, 2, 0);
+								glColor3f(0.62, 0.92, 0.99);
+								prisma(3, 6, 0.12, 0);
+								glTranslatef(10, 0, 0);
+								glColor3f(0.62, 0.92, 0.99);
+								prisma(3, 6, 0.12, 0);
 							glPopMatrix();
 							/*bath izquierda*/
 							glTranslatef(0, 0, 9);
@@ -567,6 +681,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					glTranslatef(-9,0,0);
 					glColor3f(0.62,0.92,0.99);
 					prisma(0.1,6,8,0);
+					/*	Ventana oficiona director derecha*/
+					glTranslatef(77, 0, 0);
+					glColor3f(0.62, 0.92, 0.99);
+					prisma(0.1, 6, 8, 0);
 				glPopMatrix();		
 				glPushMatrix();
 					/*bath izquierdo*/
@@ -578,6 +696,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 						glTranslatef(-2.75,0,1);
 						glColor3f(0.62,0.92,0.99);
 						prisma(0.1,6,4,0);
+						/*Ventana bath derecho*/
+						glTranslatef(77, 0, 0);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 4, 0);
 					glPopMatrix();			
 					/*staff office izquierdo*/
 					glTranslatef(9, 0, 0);
@@ -600,6 +722,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					/*Ventana bath izquierdo*/
 					glPushMatrix();
 						glTranslatef(-2, 0, -0.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 3, 0);
+						/*Ventana bath derecho*/
+						glTranslatef(77, 0, 0);
 						glColor3f(0.62, 0.92, 0.99);
 						prisma(0.1, 6, 3, 0);
 					glPopMatrix();
@@ -678,6 +804,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 						glTranslatef(-2.5, 0, 2.25);
 						glColor3f(0.62, 0.92, 0.99);
 						prisma(0.1, 6, 7.5, 0);
+						/*Ventana lado derecho*/
+						glTranslatef(77, 0, 0);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7.5, 0);
 					glPopMatrix();
 					/*wc izquierdo*/
 					glTranslatef(0, 0, 3);
@@ -700,6 +830,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					/*ventana dining hall*/
 					glPushMatrix();
 						glTranslatef(-5, 0, -2.25);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7.5, 0);
+						/*Ventana derecha*/
+						glTranslatef(77, 0, 0);
 						glColor3f(0.62, 0.92, 0.99);
 						prisma(0.1, 6, 7.5, 0);
 					glPopMatrix();
@@ -728,6 +862,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					/*kitchen ventana*/
 					glPushMatrix();
 						glTranslatef(-5, 0, -3.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7, 0);
+						/*Ventana derecha*/
+						glTranslatef(77, 0, 0);
 						glColor3f(0.62, 0.92, 0.99);
 						prisma(0.1, 6, 7, 0);
 					glPopMatrix();
@@ -938,6 +1076,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					glTranslatef(-9,0,0);
 					glColor3f(0.62,0.92,0.99);
 					prisma(0.1,6,8,0);
+					/*	Ventana oficiona director derecha*/
+					glTranslatef(77, 0, 0);
+					glColor3f(0.62, 0.92, 0.99);
+					prisma(0.1, 6, 8, 0);
 				glPopMatrix();		
 				glPushMatrix();
 					/*bath izquierdo*/
@@ -949,6 +1091,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 						glTranslatef(-2.75,0,1);
 						glColor3f(0.62,0.92,0.99);
 						prisma(0.1,6,4,0);
+						/*Ventana bath derecho*/
+						glTranslatef(77, 0, 0);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 4, 0);
 					glPopMatrix();			
 					/*staff office izquierdo*/
 					glTranslatef(9, 0, 0);
@@ -972,6 +1118,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					/*Ventana bath izquierdo*/
 					glPushMatrix();
 						glTranslatef(-2, 0, -0.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 3, 0);
+						/*Ventana bath derecho*/
+						glTranslatef(77, 0, 0);
 						glColor3f(0.62, 0.92, 0.99);
 						prisma(0.1, 6, 3, 0);
 					glPopMatrix();
@@ -1049,6 +1199,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 						glTranslatef(-2.5, 0, 2.25);
 						glColor3f(0.62, 0.92, 0.99);
 						prisma(0.1, 6, 7.5, 0);
+						/*Ventana lado derecho*/
+						glTranslatef(77, 0, 0);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7.5, 0);
 					glPopMatrix();
 					/*wc izquierdo*/
 					glTranslatef(0, 0, 3);
@@ -1071,6 +1225,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					/*ventana dining hall*/
 					glPushMatrix();
 						glTranslatef(-5, 0, -2.25);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7.5, 0);
+						/*Ventana derecha*/
+						glTranslatef(77, 0, 0);
 						glColor3f(0.62, 0.92, 0.99);
 						prisma(0.1, 6, 7.5, 0);
 					glPopMatrix();
@@ -1099,6 +1257,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					/*kitchen ventana*/
 					glPushMatrix();
 						glTranslatef(-5, 0, -3.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7, 0);
+						/*Ventana derecha*/
+						glTranslatef(77, 0, 0);
 						glColor3f(0.62, 0.92, 0.99);
 						prisma(0.1, 6, 7, 0);
 					glPopMatrix();
@@ -1309,6 +1471,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					glTranslatef(-9,0,0);
 					glColor3f(0.62,0.92,0.99);
 					prisma(0.1,6,8,0);
+					/*	Ventana oficiona director derecha*/
+					glTranslatef(77, 0, 0);
+					glColor3f(0.62, 0.92, 0.99);
+					prisma(0.1, 6, 8, 0);
 				glPopMatrix();		
 				glPushMatrix();
 					/*bath izquierdo*/
@@ -1408,6 +1574,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 						glTranslatef(-2.5, 0, 2.25);
 						glColor3f(0.62, 0.92, 0.99);
 						prisma(0.1, 6, 7.5, 0);
+						/*Ventana lado derecho*/
+						glTranslatef(77, 0, 0);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7.5, 0);
 					glPopMatrix();
 					/*wc izquierdo*/
 					glTranslatef(0, 0, 3);
@@ -1430,6 +1600,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					/*ventana dining hall*/
 					glPushMatrix();
 						glTranslatef(-5, 0, -2.25);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7.5, 0);
+						/*Ventana derecha*/
+						glTranslatef(77, 0, 0);
 						glColor3f(0.62, 0.92, 0.99);
 						prisma(0.1, 6, 7.5, 0);
 					glPopMatrix();
@@ -1458,6 +1632,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					/*kitchen ventana*/
 					glPushMatrix();
 						glTranslatef(-5, 0, -3.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7, 0);
+						/*Ventana derecha*/
+						glTranslatef(77, 0, 0);
 						glColor3f(0.62, 0.92, 0.99);
 						prisma(0.1, 6, 7, 0);
 					glPopMatrix();
@@ -1668,6 +1846,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					glTranslatef(-9,0,0);
 					glColor3f(0.62,0.92,0.99);
 					prisma(0.1,6,8,0);
+					/*	Ventana oficiona director derecha*/
+					glTranslatef(77, 0, 0);
+					glColor3f(0.62, 0.92, 0.99);
+					prisma(0.1, 6, 8, 0);
 				glPopMatrix();		
 				glPushMatrix();
 					/*bath izquierdo*/
@@ -1785,6 +1967,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 						glTranslatef(-5, 0, -2.25);
 						glColor3f(0.62, 0.92, 0.99);
 						prisma(0.1, 6, 7.5, 0);
+						/*Ventana derecha*/
+						glTranslatef(77, 0, 0);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7.5, 0);
 					glPopMatrix();
 					/*archive*/
 					glTranslatef(67, 0, -7.5);
@@ -1811,6 +1997,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					/*kitchen ventana*/
 					glPushMatrix();
 						glTranslatef(-5, 0, -3.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7, 0);
+						/*Ventana derecha*/
+						glTranslatef(77, 0, 0);
 						glColor3f(0.62, 0.92, 0.99);
 						prisma(0.1, 6, 7, 0);
 					glPopMatrix();
@@ -2068,6 +2258,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					glTranslatef(-5, 0, -2.25);
 					glColor3f(0.62, 0.92, 0.99);
 					prisma(0.1, 6, 7.5, 0);
+					/*Ventana derecha*/
+					glTranslatef(77, 0, 0);
+					glColor3f(0.62, 0.92, 0.99);
+					prisma(0.1, 6, 7.5, 0);
 				glPopMatrix();
 				/*archive*/
 				glTranslatef(67, 0, -7.5);
@@ -2094,6 +2288,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 				/*kitchen ventana*/
 					glPushMatrix();
 						glTranslatef(-5, 0, -3.5);
+						glColor3f(0.62, 0.92, 0.99);
+						prisma(0.1, 6, 7, 0);
+						/*Ventana derecha*/
+						glTranslatef(77, 0, 0);
 						glColor3f(0.62, 0.92, 0.99);
 						prisma(0.1, 6, 7, 0);
 					glPopMatrix();
