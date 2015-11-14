@@ -54,23 +54,23 @@ void InitGL ( void )     // Inicializamos parametros
 	/*****************************
 	* DefiniciOn de texturas
 	*****************************/
-	fuera.LoadTGA("pared.tga");
+	fuera.LoadTGA("Textures/pared.tga");
 	fuera.BuildGLTexture();
 	fuera.ReleaseImage();
 
-	pared.LoadTGA("fuera3.tga");
+	pared.LoadTGA("Textures/fuera3.tga");
 	pared.BuildGLTexture();
 	pared.ReleaseImage();
 
-	piso.LoadTGA("piso.tga");
+	piso.LoadTGA("Textures/piso.tga");
 	piso.BuildGLTexture();
 	piso.ReleaseImage();
 
-	ventana.LoadTGA("ventana.tga");
+	ventana.LoadTGA("Textures/ventana.tga");
 	ventana.BuildGLTexture();
 	ventana.ReleaseImage();
 
-	puerta.LoadTGA("puerta.tga");
+	puerta.LoadTGA("Textures/puerta.tga");
 	puerta.BuildGLTexture();
 	puerta.ReleaseImage();
 }
@@ -2287,7 +2287,7 @@ void display ( void )   // Creamos la funcion donde se dibuja
 		*			Quinto Piso
 		***********************************/
 		glPushMatrix();
-			glColor3f(1, 1, 1);
+			glColor3f(1, 1, 1);	
 			glTranslatef(35.5, 60, 19.5);			
 			prisma(77, 12, 49, pared.GLindex);			
 			glPushMatrix();
