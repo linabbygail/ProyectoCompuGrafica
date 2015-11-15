@@ -12,7 +12,6 @@ float angleX = 0.0f;
 float angleY = 0.0f;
 int screenW = 0.0;
 int screenH = 0.0;
-int otherVariable;
 
 /***************
 * Texturas
